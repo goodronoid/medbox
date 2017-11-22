@@ -1,2 +1,102 @@
-git remote add origin git@github.com:goodrononoid/medbox.git
-git push -u origin master
+Install:
+apt-get install git
+http://git-for-windows.github.io//
+
+Preparing: (~/.gitconfig / <folder>.git/config)
+git config --global user.name "___"
+git config --global user.email "___"
+git config --global core.safecrlf true
+Unix:
+git config --global core.autocrlf input
+Win:
+git config --global core.autocrlf true
+
+Create:
+git init (create ".git" folder)
+git add . (add all files)
+git commit -m "First commit" (if without "-m" - use ":wq")
+
+Connect:
+git remote add medbox git@github.com:goodronoid/medbox.git
+git push -u medbox master
+
+#####################################
+
+git commit --amend -m "Comment" = (amend - change previous commit)
+git status
+git tag - list of tags
+git tag <tag> = tagged cuurent version as <tag>
+git tag -d <tag> = delete <tag>
+git checkout = undo changes (vs "git add")
+git checkout <hash> / <treecash> / <tag> / <tag>^ / master
+git branch = list of local branches
+git branch -a = list of branches (local & remotes)
+git branch <branch name> = create new <branch> (next command: git checkout <branch name>)
+git merge <source branch>
+git rebase <source branch> = makes the chain of commits linear and more readable
+git reset HEAD <file> = undo command 'git add <file>"
+git reset --hard <hash> = delete all commits after <hash>
+git revert HEAD --no-edit = undo last commit
+git revert --hard <tag> = delete all commits after <tag>
+git mv <file> <folder> = move <file> to <folder>
+
+Meld - visual diff and merge tool http://meldmerge.org/
+### Other repos ###
+git clone <folder> <cloned_folder> = create copy of repo in <folder>
+git clone --bare <folder> <cloned_folder>.git = create copy of repo in <folder>
+git remote = list of remote repos
+git remote show <origin> = more info about remote repo <origin>
+git remote add <local name> <URL of remote repo> = add remote repo
+git fetch = get new commit without merging (next command: git merge <remote branch name>)
+git pull = git fetch; git merge
+git push <local name of remote repo> <name of local branch>
+git branch --track <remote branch name> = add remote branch
+
+### git log (gitk utilite for Unix) ###
+--max-count=2
+--since='5 minutes ago'
+--until='5 minutes ago'
+--author=<name>
+--all
+--pretty=oneline 
+--pretty=format:"%h %ad | %s%d [%an]" --graph --date=short
+%h  - short hash of commit
+%ad - commit date
+%s  - comment
+%d  - commit decorations (branch heads, tags)
+%an - author name
+
+git type <hash> (git cat-file -t <hash>) 
+git dump <hash> (git cat-file -p <hash>) - 
+
+### Aliases: ###
+Win:
+git config --global alias.co checkout
+git config --global alias.ci commit
+git config --global alias.st status
+git config --global alias.br branch
+git config --global alias.hist "log --pretty=format:'%h %ad | %s%d [%an]' --graph --date=short"
+git config --global alias.type 'cat-file -t'
+git config --global alias.dump 'cat-file -p'
+Unix:
+nano ~/.gitconfig
+[alias]
+  co = checkout
+  ci = commit
+  st = status
+  br = branch
+  hist = log --pretty=format:\"%h %ad | %s%d [%an]\" --graph --date=short
+  type = cat-file -t
+  dump = cat-file -p
+nano ~/.profile
+alias gs='git status '
+alias ga='git add '
+alias gb='git branch '
+alias gc='git commit'
+alias gd='git diff'
+alias go='git checkout '
+alias gk='gitk --all&'
+alias gx='gitx --all'
+
+alias got='git '
+alias get='git '
