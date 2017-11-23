@@ -41,6 +41,8 @@ git revert --hard <tag> = delete all commits after <tag>
 git mv <file> <folder> = move <file> to <folder>
 
 Meld - visual diff and merge tool http://meldmerge.org/
+
+
 ### Other repos ###
 git clone <folder> <cloned_folder> = create copy of repo in <folder>
 git clone --bare <folder> <cloned_folder>.git = create copy of repo in <folder>
@@ -70,24 +72,17 @@ git type <hash> (git cat-file -t <hash>)
 git dump <hash> (git cat-file -p <hash>) - 
 
 ### Aliases: ###
-Win:
-git config --global alias.co checkout
-git config --global alias.ci commit
-git config --global alias.st status
-git config --global alias.br branch
-git config --global alias.hist "log --pretty=format:'%h %ad | %s%d [%an]' --graph --date=short"
-git config --global alias.type 'cat-file -t'
-git config --global alias.dump 'cat-file -p'
 Unix:
 nano ~/.gitconfig
 [alias]
   co = checkout
   ci = commit
   st = status
-  br = branch
+  br = branch -av
   hist = log --pretty=format:\"%h %ad | %s%d [%an]\" --graph --date=short
   type = cat-file -t
   dump = cat-file -p
+
 nano ~/.profile
 alias gs='git status '
 alias ga='git add '
@@ -97,6 +92,14 @@ alias gd='git diff'
 alias go='git checkout '
 alias gk='gitk --all&'
 alias gx='gitx --all'
-
 alias got='git '
 alias get='git '
+
+Win:
+git config --global alias.co checkout
+git config --global alias.ci commit
+git config --global alias.st status
+git config --global alias.br branch
+git config --global alias.hist "log --pretty=format:'%h %ad | %s%d [%an]' --graph --date=short"
+git config --global alias.type 'cat-file -t'
+git config --global alias.dump 'cat-file -p'

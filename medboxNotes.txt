@@ -9,63 +9,46 @@
 3 page:
 	<h3>Заполните данные о себе</h3>
 ###############################################################################
-s.headers
-{
-	'Accept-Encoding': 'gzip,deflate,sdch', 
-	'Accept-Language': 'ru-RU,ru;q=0.8,en-US;q=0.6,en;q=0.4', 
-	'Connection': 'keep-alive', 
-	'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8', 
-	'User-Agent': 'Mozilla/5.0 (Windows NT 10.0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3112.90 Safari/537.36', 
-	'Cache-Control': 'max-age=0'}
+Chrome Request Headers:
 
-s.cookies
-{
-	'ASP.NET_SessionId': '40moazmze0nuetjcr1dwbn0l', 
-	'__Region': '{
-		"End":3000518655,
-		"Region":"86",
-		"Name":"Ð\x9dÐ¸Ð¶Ð½ÐµÐ²Ð°Ñ\x80Ñ\x82Ð¾Ð²Ñ\x81Ðº"}'}
+1 https://medbox.ru/2016/
 
-r.headers
-{
-	'Access-Control-Allow-Headers': 'X-Requested-With, origin, content-type, Content-Type, accept, access_token, ga_clientid', 
-	'X-AspNetMvc-Version': '5.2', 
-	'Access-Control-Allow-Methods': 'GET, PUT, POST, DELETE, HEAD, OPTIONS', 
-	'Content-Type': 'text/html; charset=utf-8', 
-	'Date': 'Fri, 10 Nov 2017 09:06:42 GMT', 
-	'Server': 'Microsoft-IIS/8.5', 
-	'Content-Length': '43130', 
-	'Set-Cookie': 'ASP.NET_SessionId=40moazmze0nuetjcr1dwbn0l; path=/; HttpOnly, __Region={"End":3000518655,"Region":"86","Name":"Ð\x9dÐ¸Ð¶Ð½ÐµÐ²Ð°Ñ\x80Ñ\x82Ð¾Ð²Ñ\x81Ðº"}; path=/', 
-	'Content-Encoding': 'gzip', 
-	'Cache-Control': 'private', 
-	'Access-Control-Allow-Credentials': 'true', 
-	'X-AspNet-Version': '4.0.30319', 
-	'Vary': 'Accept-Encoding'}
+General:
+Request URL:https://medbox.ru/2016/
+Request Method:GET
+Status Code:200 OK
+Remote Address:192.168.0.5:8080
+Referrer Policy:no-referrer-when-downgrade
 
-r.cookies
-{
-	'ASP.NET_SessionId': '40moazmze0nuetjcr1dwbn0l', 
-	'__Region': '{
-		"End":3000518655,
-		"Region":"86",
-		"Name":"Ð\x9dÐ¸Ð¶Ð½ÐµÐ²Ð°Ñ\x80Ñ\x82Ð¾Ð²Ñ\x81Ðº"}'}
+Request Headers:
+Accept:text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8
+Accept-Encoding:gzip, deflate, br
+Accept-Language:ru-RU,ru;q=0.9,en-US;q=0.8,en;q=0.7
+Connection:keep-alive
+Host:medbox.ru
+Upgrade-Insecure-Requests:1
+User-Agent:Mozilla/5.0 (X11; Linux i686) AppleWebKit/537.36 (KHTML, like Gecko) Ubuntu Chromium/62.0.3202.89 Chrome/62.0.3202.89 Safari/537.36
 
-CHROME headers1 (301)
-GET http://medbox.ru/2016/ HTTP/1.1
+Chosen ХМАО, Нижневартовск
+
+2 https://medbox.ru/2016/Rec/SelectDept
+
+General:
+Request URL:https://medbox.ru/2016/Rec/SelectDept
+Request Method:GET
+Status Code:200 OK
+Remote Address:192.168.0.5:8080
+Referrer Policy:no-referrer-when-downgrade
+
+Request Headers:
+GET /2016/Rec/SelectDept HTTP/1.1
 Host: medbox.ru
-Proxy-Connection: keep-alive
-Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8
-User-Agent: Mozilla/5.0 (X11; Linux i686) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/31.0.1650.63 Safari/537.36
-Accept-Encoding: gzip,deflate,sdch
-Accept-Language: ru-RU,ru;q=0.8,en-US;q=0.6,en;q=0.4
-Cookie: 
-	ASP.NET_SessionId=3m2ffcykz4cb1om523vr4jtp; 
-	_ym_uid=1509363136916671318; 
-	__Region=%7B%22Region%22%3A%2286%22%2C%22Name%22%3A%22%D0%9D%D0%B8%D0%B6%D0%BD%D0%B5%D0%B2%D0%B0%D1%80%D1%82%D0%BE%D0%B2%D1%81%D0%BA%22%7D; 
-	_ga=GA1.2.1083857719.1509363136
-
-CHROME cookies
-ASP.NET_SessionId = 3m2ffcykz4cb1om523vr4jtp
-__Region = %7B%22Region%22%3A%2286%22%2C%22Name%22%3A%22%D0%9D%D0%B8%D0%B6%D0%BD%D0%B5%D0%B2%D0%B0%D1%80%D1%82%D0%BE%D0%B2%D1%81%D0%BA%22%7D
-_ga = GA1.2.1083857719.1509363136
-_ym_uid = 1509363136916671318
+Connection: keep-alive
+Cache-Control: max-age=0
+Upgrade-Insecure-Requests: 1
+User-Agent: Mozilla/5.0 (X11; Linux i686) AppleWebKit/537.36 (KHTML, like Gecko) Ubuntu Chromium/62.0.3202.89 Chrome/62.0.3202.89 Safari/537.36
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8
+Referer: https://medbox.ru/2016/
+Accept-Encoding: gzip, deflate, br
+Accept-Language: ru-RU,ru;q=0.9,en-US;q=0.8,en;q=0.7
+Cookie: ASP.NET_SessionId=mc4dcnm5eruohpve2nlpwgye; __Region=%7B%22Region%22%3A%2286%22%2C%22Name%22%3A%22%D0%9D%D0%B8%D0%B6%D0%BD%D0%B5%D0%B2%D0%B0%D1%80%D1%82%D0%BE%D0%B2%D1%81%D0%BA%22%7D; _ym_uid=1511438481466314529; _ga=GA1.2.1754532188.1511438481; _gid=GA1.2.418642800.1511438481; _ym_visorc_41304969=w; _ym_isad=2; _ym_visorc_27732045=w
