@@ -1,54 +1,68 @@
-1 page "Choose region":
-	<h3 style="margin-bottom: 5px">Выберите регион и город</h3>
-	<span class="form-label form-label--light form-label--inline">Ваш регион:&nbsp;</span>
+headers_standart:
+'User-Agent' : 'Mozilla/5.0 (Windows NT 10.0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3112.90 Safari/537.36',
+'Accept' : 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8',
+'Accept-Encoding' : 'gzip,deflate,sdch',
+'Accept-Language' : 'ru-RU,ru;q=0.8,en-US;q=0.6,en;q=0.4',
+'Cache-Control' : 'max-age=0'
 
-2 page "Choose dept":
-	<h3>Выберите лечебное учреждение</h3>
-	<div class="crumbs"><a href="/2016/">г. Нижневартовск</a></div>
 
-3 page:
-	<h3>Заполните данные о себе</h3>
-###############################################################################
-Chrome Request Headers:
 
-1 https://medbox.ru/2016/
+r.headers
+'Cache-Control': 'private', 
+'Date': 'Fri, 24 Nov 2017 10:13:03 GMT', 
+'Content-Type': 'text/html; charset=utf-8', 
+'Content-Encoding': 'gzip', 
+'Vary': 'Accept-Encoding', 
+'Server': 'Microsoft-IIS/8.5'
+'X-AspNetMvc-Version': '5.2', 
+'X-AspNet-Version': '4.0.30319', 
+'Access-Control-Allow-Methods': 'GET, PUT, POST, DELETE, HEAD, OPTIONS', 
+'Access-Control-Allow-Headers': 'X-Requested-With, origin, content-type, Content-Type, accept, access_token, ga_clientid', 
+'Access-Control-Allow-Credentials': 'true', 
+'Content-Length': '43130', 
 
-General:
-Request URL:https://medbox.ru/2016/
-Request Method:GET
-Status Code:200 OK
-Remote Address:192.168.0.5:8080
-Referrer Policy:no-referrer-when-downgrade
+'Set-Cookie': 'ASP.NET_SessionId=ethnemxwk1riz4o02kjjxgfp; path=/; HttpOnly, __Region={"Region":"86","Name":"Ð\x9dÐ¸Ð¶Ð½ÐµÐ²Ð°Ñ\x80Ñ\x82Ð¾Ð²Ñ\x81Ðº","End":3000518655}; path=/', 
 
-Request Headers:
-Accept:text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8
-Accept-Encoding:gzip, deflate, br
-Accept-Language:ru-RU,ru;q=0.9,en-US;q=0.8,en;q=0.7
-Connection:keep-alive
-Host:medbox.ru
-Upgrade-Insecure-Requests:1
-User-Agent:Mozilla/5.0 (X11; Linux i686) AppleWebKit/537.36 (KHTML, like Gecko) Ubuntu Chromium/62.0.3202.89 Chrome/62.0.3202.89 Safari/537.36
 
-Chosen ХМАО, Нижневартовск
 
-2 https://medbox.ru/2016/Rec/SelectDept
+r.cookies ( == s.dict )
+'__Region': '{"Region":"86","Name":"Ð\x9dÐ¸Ð¶Ð½ÐµÐ²Ð°Ñ\x80Ñ\x82Ð¾Ð²Ñ\x81Ðº","End":3000518655}', 
+'ASP.NET_SessionId': 'ethnemxwk1riz4o02kjjxgfp'
 
-General:
-Request URL:https://medbox.ru/2016/Rec/SelectDept
-Request Method:GET
-Status Code:200 OK
-Remote Address:192.168.0.5:8080
-Referrer Policy:no-referrer-when-downgrade
+#################################################################################
 
-Request Headers:
-GET /2016/Rec/SelectDept HTTP/1.1
-Host: medbox.ru
-Connection: keep-alive
-Cache-Control: max-age=0
-Upgrade-Insecure-Requests: 1
-User-Agent: Mozilla/5.0 (X11; Linux i686) AppleWebKit/537.36 (KHTML, like Gecko) Ubuntu Chromium/62.0.3202.89 Chrome/62.0.3202.89 Safari/537.36
-Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8
-Referer: https://medbox.ru/2016/
-Accept-Encoding: gzip, deflate, br
-Accept-Language: ru-RU,ru;q=0.9,en-US;q=0.8,en;q=0.7
-Cookie: ASP.NET_SessionId=mc4dcnm5eruohpve2nlpwgye; __Region=%7B%22Region%22%3A%2286%22%2C%22Name%22%3A%22%D0%9D%D0%B8%D0%B6%D0%BD%D0%B5%D0%B2%D0%B0%D1%80%D1%82%D0%BE%D0%B2%D1%81%D0%BA%22%7D; _ym_uid=1511438481466314529; _ga=GA1.2.1754532188.1511438481; _gid=GA1.2.418642800.1511438481; _ym_visorc_41304969=w; _ym_isad=2; _ym_visorc_27732045=w
+
+
+s.headers (before r2 request, after changes)
+'Cache-Control': 'max-age=0', 
+'User-Agent': 'Mozilla/5.0 (Windows NT 10.0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3112.90 Safari/537.36', 
+'Connection': 'keep-alive', 
+'Accept-Language': 'ru-RU,ru;q=0.8,en-US;q=0.6,en;q=0.4'
+'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8', 
+'Accept-Encoding': 'gzip,deflate,sdch', 
+
+'Set-Cookie': 'ASP.NET_SessionId=ethnemxwk1riz4o02kjjxgfp; path=/; HttpOnly, __Region={"End":3000518655,"Region":"86","Name":"%D0%9D%D0%B8%D0%B6%D0%BD%D0%B5%D0%B2%D0%B0%D1%80%D1%82%D0%BE%D0%B2%D1%81%D0%BA"}; path=/; _ym_uid=1511438481466314529; _ga=GA1.2.1754532188.1511438481; _gid=GA1.2.418642800.1511438481; _ym_visorc_41304969=w; _ym_isad=2; _ym_visorc_27732045=w', 
+
+
+
+
+
+
+
+
+r2.headers
+'X-AspNetMvc-Version': '5.2', 'Content-Type': 'text/html; charset=utf-8', 'Content-Length': '37953', 'Access-Control-Allow-Methods': 'GET, PUT, POST, DELETE, HEAD, OPTIONS', 'Cache-Control': 'private', 'Date': 'Fri, 24 Nov 2017 12:10:22 GMT', 'Content-Encoding': 'gzip', 'Vary': 'Accept-Encoding', 'X-AspNet-Version': '4.0.30319', 'Access-Control-Allow-Headers': 'X-Requested-With, origin, content-type, Content-Type, accept, access_token, ga_clientid', 'Access-Control-Allow-Credentials': 'true', 'Server': 'Microsoft-IIS/8.5'
+r2.cookies
+-
+s.headers
+'Accept-Encoding': 'gzip,deflate,sdch', 'User-Agent': 'Mozilla/5.0 (Windows NT 10.0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3112.90 Safari/537.36', 'Set-Cookie': 'ASP.NET_SessionId=ethnemxwk1riz4o02kjjxgfp; path=/; HttpOnly, __Region={"End":3000518655,"Region":"86","Name":"%D0%9D%D0%B8%D0%B6%D0%BD%D0%B5%D0%B2%D0%B0%D1%80%D1%82%D0%BE%D0%B2%D1%81%D0%BA"}; path=/; _ym_uid=1511438481466314529; _ga=GA1.2.1754532188.1511438481; _gid=GA1.2.418642800.1511438481; _ym_visorc_41304969=w; _ym_isad=2; _ym_visorc_27732045=w', 'Cache-Control': 'max-age=0', 'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8', 'Connection': 'keep-alive', 'Accept-Language': 'ru-RU,ru;q=0.8,en-US;q=0.6,en;q=0.4'
+s.cookies
+'__Region': '{"Region":"86","Name":"Ð\x9dÐ¸Ð¶Ð½ÐµÐ²Ð°Ñ\x80Ñ\x82Ð¾Ð²Ñ\x81Ðº","End":3000518655}', 
+'ASP.NET_SessionId': 'ethnemxwk1riz4o02kjjxgfp'
+#################################################################################
+r3.headers
+'X-AspNetMvc-Version': '5.2', 'Content-Type': 'text/html; charset=utf-8', 'Content-Length': '37953', 'Access-Control-Allow-Methods': 'GET, PUT, POST, DELETE, HEAD, OPTIONS', 'Cache-Control': 'private', 'Date': 'Fri, 24 Nov 2017 12:13:10 GMT', 'Content-Encoding': 'gzip', 'Vary': 'Accept-Encoding', 'X-AspNet-Version': '4.0.30319', 'Access-Control-Allow-Headers': 'X-Requested-With, origin, content-type, Content-Type, accept, access_token, ga_clientid', 'Access-Control-Allow-Credentials': 'true', 'Server': 'Microsoft-IIS/8.5'
+r3.cookies
+-
+s.cookies
+'__Region': '{"Region":"86","Name":"Ð\x9dÐ¸Ð¶Ð½ÐµÐ²Ð°Ñ\x80Ñ\x82Ð¾Ð²Ñ\x81Ðº","End":3000518655}', 'ASP.NET_SessionId': 'ethnemxwk1riz4o02kjjxgfp'
