@@ -23,3 +23,17 @@ print(region)
 # str(soup('option', value = 89)[0].string).strip()
 
 # print(soup.prettify())
+
+# how to save page to local.html file :
+
+# # просто сохраним страницу в html-файл:
+# soup = bs(r.content, 'html.parser')
+# with open('medbox.html', 'w', encoding='utf-8') as output_file:
+#     output_file.write(soup.prettify())
+#
+# # 
+# region = soup.find('select', id = 'region_selector')
+# print(region.prettify())
+# city = soup.find('span', id = 'hmao_town_list')
+# nv86 = city.find('option', value = 'Нижневартовск')
+# print(nv86)

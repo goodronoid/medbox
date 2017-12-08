@@ -1,13 +1,15 @@
 headers_standart:
+
 'User-Agent' : 'Mozilla/5.0 (Windows NT 10.0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3112.90 Safari/537.36',
 'Accept' : 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8',
 'Accept-Encoding' : 'gzip,deflate,sdch',
 'Accept-Language' : 'ru-RU,ru;q=0.8,en-US;q=0.6,en;q=0.4',
-'Cache-Control' : 'max-age=0'
+
 
 
 
 r.headers
+
 'Cache-Control': 'private', 
 'Date': 'Fri, 24 Nov 2017 10:13:03 GMT', 
 'Content-Type': 'text/html; charset=utf-8', 
@@ -26,14 +28,15 @@ r.headers
 
 
 r.cookies ( == s.dict )
-'__Region': '{"Region":"86","Name":"Ð\x9dÐ¸Ð¶Ð½ÐµÐ²Ð°Ñ\x80Ñ\x82Ð¾Ð²Ñ\x81Ðº","End":3000518655}', 
 'ASP.NET_SessionId': 'ethnemxwk1riz4o02kjjxgfp'
+'__Region': '{"Region":"86","Name":"Ð\x9dÐ¸Ð¶Ð½ÐµÐ²Ð°Ñ\x80Ñ\x82Ð¾Ð²Ñ\x81Ðº","End":3000518655}', 
 
-#################################################################################
+###########################################################################################
 
 
 
 s.headers (before r2 request, after changes)
+
 'Cache-Control': 'max-age=0', 
 'User-Agent': 'Mozilla/5.0 (Windows NT 10.0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3112.90 Safari/537.36', 
 'Connection': 'keep-alive', 
@@ -49,20 +52,67 @@ s.headers (before r2 request, after changes)
 
 
 
-
 r2.headers
-'X-AspNetMvc-Version': '5.2', 'Content-Type': 'text/html; charset=utf-8', 'Content-Length': '37953', 'Access-Control-Allow-Methods': 'GET, PUT, POST, DELETE, HEAD, OPTIONS', 'Cache-Control': 'private', 'Date': 'Fri, 24 Nov 2017 12:10:22 GMT', 'Content-Encoding': 'gzip', 'Vary': 'Accept-Encoding', 'X-AspNet-Version': '4.0.30319', 'Access-Control-Allow-Headers': 'X-Requested-With, origin, content-type, Content-Type, accept, access_token, ga_clientid', 'Access-Control-Allow-Credentials': 'true', 'Server': 'Microsoft-IIS/8.5'
+
+'Cache-Control': 'private', 
+'Content-Type': 'text/html; charset=utf-8', 
+'Server': 'Microsoft-IIS/8.5'
+'X-AspNetMvc-Version': '5.2', 
+'X-AspNet-Version': '4.0.30319', 
+'Access-Control-Allow-Methods': 'GET, PUT, POST, DELETE, HEAD, OPTIONS', 
+'Access-Control-Allow-Credentials': 'true', 
+'Access-Control-Allow-Headers': 'X-Requested-With, origin, content-type, Content-Type, accept, access_token, ga_clientid', 
+'Date': 'Fri, 24 Nov 2017 12:10:22 GMT', 
+'Content-Length': '37953', 
++ 'Content-Encoding': 'gzip', 
++ 'Vary': 'Accept-Encoding', 
+
 r2.cookies
 -
+
+
+
+
+s.cookies
+'__Region': '{"Region":"86","Name":"Ð\x9dÐ¸Ð¶Ð½ÐµÐ²Ð°Ñ\x80Ñ\x82Ð¾Ð²Ñ\x81Ðº","End":3000518655}',
+'ASP.NET_SessionId': 'ethnemxwk1riz4o02kjjxgfp'
+
+###########################################################################################
+
 s.headers
-'Accept-Encoding': 'gzip,deflate,sdch', 'User-Agent': 'Mozilla/5.0 (Windows NT 10.0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3112.90 Safari/537.36', 'Set-Cookie': 'ASP.NET_SessionId=ethnemxwk1riz4o02kjjxgfp; path=/; HttpOnly, __Region={"End":3000518655,"Region":"86","Name":"%D0%9D%D0%B8%D0%B6%D0%BD%D0%B5%D0%B2%D0%B0%D1%80%D1%82%D0%BE%D0%B2%D1%81%D0%BA"}; path=/; _ym_uid=1511438481466314529; _ga=GA1.2.1754532188.1511438481; _gid=GA1.2.418642800.1511438481; _ym_visorc_41304969=w; _ym_isad=2; _ym_visorc_27732045=w', 'Cache-Control': 'max-age=0', 'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8', 'Connection': 'keep-alive', 'Accept-Language': 'ru-RU,ru;q=0.8,en-US;q=0.6,en;q=0.4'
+
+'Cache-Control': 'max-age=0', 
+'User-Agent': 'Mozilla/5.0 (Windows NT 10.0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3112.90 Safari/537.36', 
+'Connection': 'keep-alive', 
+'Accept-Language': 'ru-RU,ru;q=0.8,en-US;q=0.6,en;q=0.4'
+'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8', 
+'Accept-Encoding': 'gzip,deflate,sdch', 
+'Set-Cookie': 'ASP.NET_SessionId=ethnemxwk1riz4o02kjjxgfp; path=/; HttpOnly, __Region={"End":3000518655,"Region":"86","Name":"%D0%9D%D0%B8%D0%B6%D0%BD%D0%B5%D0%B2%D0%B0%D1%80%D1%82%D0%BE%D0%B2%D1%81%D0%BA"}; path=/; _ym_uid=1511438481466314529; _ga=GA1.2.1754532188.1511438481; _gid=GA1.2.418642800.1511438481; _ym_visorc_41304969=w; _ym_isad=2; _ym_visorc_27732045=w', 
+
+
+
+
+r3.headers
+
+'Cache-Control': 'private', 
+'Content-Type': 'text/html; charset=utf-8', 
+'Content-Encoding': 'gzip', 
+'Vary': 'Accept-Encoding', 
+'Server': 'Microsoft-IIS/8.5'
+'X-AspNetMvc-Version': '5.2', 
+'X-AspNet-Version': '4.0.30319', 
+'Access-Control-Allow-Methods': 'GET, PUT, POST, DELETE, HEAD, OPTIONS', 
+'Access-Control-Allow-Credentials': 'true', 
+'Access-Control-Allow-Headers': 'X-Requested-With, origin, content-type, Content-Type, accept, access_token, ga_clientid', 
+'Date': 'Fri, 24 Nov 2017 12:13:10 GMT', 
+'Content-Length': '37953', 
+
+
+r3.cookies
+-
+
+
+
 s.cookies
 '__Region': '{"Region":"86","Name":"Ð\x9dÐ¸Ð¶Ð½ÐµÐ²Ð°Ñ\x80Ñ\x82Ð¾Ð²Ñ\x81Ðº","End":3000518655}', 
 'ASP.NET_SessionId': 'ethnemxwk1riz4o02kjjxgfp'
-#################################################################################
-r3.headers
-'X-AspNetMvc-Version': '5.2', 'Content-Type': 'text/html; charset=utf-8', 'Content-Length': '37953', 'Access-Control-Allow-Methods': 'GET, PUT, POST, DELETE, HEAD, OPTIONS', 'Cache-Control': 'private', 'Date': 'Fri, 24 Nov 2017 12:13:10 GMT', 'Content-Encoding': 'gzip', 'Vary': 'Accept-Encoding', 'X-AspNet-Version': '4.0.30319', 'Access-Control-Allow-Headers': 'X-Requested-With, origin, content-type, Content-Type, accept, access_token, ga_clientid', 'Access-Control-Allow-Credentials': 'true', 'Server': 'Microsoft-IIS/8.5'
-r3.cookies
--
-s.cookies
-'__Region': '{"Region":"86","Name":"Ð\x9dÐ¸Ð¶Ð½ÐµÐ²Ð°Ñ\x80Ñ\x82Ð¾Ð²Ñ\x81Ðº","End":3000518655}', 'ASP.NET_SessionId': 'ethnemxwk1riz4o02kjjxgfp'
