@@ -27,8 +27,8 @@ print(region)
 # how to save page to local.html file :
 
 # # просто сохраним страницу в html-файл:
-# soup = bs(r.content, 'html.parser')
-# with open('medbox.html', 'w', encoding='utf-8') as output_file:
+# soup = bs(r2.content, 'html.parser')
+# with open('medbox2_SelectDept.html', 'w', encoding='utf-8') as output_file:
 #     output_file.write(soup.prettify())
 #
 # # 

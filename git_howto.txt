@@ -5,7 +5,7 @@ http://git-for-windows.github.io//
 Preparing: (~/.gitconfig / <folder>.git/config)
 git config --global user.name "___"
 git config --global user.email "___"
-git config --global core.safecrlf true
+git config --global core.safecrlf warn
 Unix:
 git config --global core.autocrlf input
 Win:
@@ -25,7 +25,7 @@ git push -u medbox master
 git commit --amend -m "Comment" = (amend - change previous commit)
 git status
 git tag - list of tags
-git tag <tag> = tagged cuurent version as <tag>
+git tag <tag> = tagged current version as <tag>
 git tag -d <tag> = delete <tag>
 git checkout = undo changes (vs "git add")
 git checkout <hash> / <treecash> / <tag> / <tag>^ / master

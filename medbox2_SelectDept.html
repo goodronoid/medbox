@@ -95,156 +95,32 @@
             $(window).on('location:changed', hideStatisticsIfNeeded);
         });
   </script>
-  <style type="text/css">
-   .sbSelector, .sbOptions {
-            width: 450px;
-        }
+  <style>
+   .sbSelector, .sbOptions
+     {
+         width:500px;
+     }
   </style>
-  <link href="/2016/Content/towns.css" rel="stylesheet" type="text/css"/>
   <script type="text/javascript">
    $(document).ready(function () {
-            function onLocationChanged() {
-                var newRegionValue, newCityValue;
-
-                if (Modernizr.touch) {
-                    // код для десктопа
-                    newRegionValue = $("select#region_selector")[0].value;
-                    newCityValue = $("select[name=citylist]:enabled")[0].value;
-                } else {
-                    newRegionValue = $("select#region_selector").select2('data').id;
-                    newCityValue = $("select[name=citylist]:enabled").select2('data').id;
-                }
-
-                window.setLocationCookie(newRegionValue, newCityValue);
-
-                $(window).trigger('location:changed', [newRegionValue, newCityValue]);
-            }
-
-            function showLocationElements(mapSelector, regionSelector) {
-                $(mapSelector).show();
-                $(regionSelector).show();
-                $(regionSelector + ' select').prop("disabled", "");
-                $(regionSelector + ' select').select2("enable", true);
-            }
-
-            function hideLocationElements(mapSelector, regionSelector) {
-                $(mapSelector).hide();
-                $(regionSelector).hide();
-                $(regionSelector + ' select').prop("disabled", "disabled");
-                $(regionSelector + ' select').select2("enable", false);
-            }
-
-            function SortSelectCity(selector_span_name) {
-                var sel = $(selector_span_name + ' select');
-                var opts_list = sel.find('option');
-                var newoptonlist = [];
-
-                // Устанавливаем главный город в зависимости от региона
-                var firstcity = "НИЖНЕВАРТОВСК";
-
-                if (selector_span_name == "span#yanao_town_list")
-                    firstcity = "НОВЫЙ УРЕНГОЙ";
-                else if (selector_span_name == "span#tyumen_town_list")
-                    firstcity = "ТЮМЕНЬ";
-
-                // Сортируем по алфавиту
-                opts_list.sort(function (a, b) { return ($(a).text() > $(b).text()) ? 1 : -1; });
-
-                // Проходимся по массиву в поисках главного города
-                for (var i = 0; i < opts_list.length; i++) {
-                    if (opts_list[i].value.toUpperCase() == firstcity)
-                    {
-                        // в новый лист ставим первым
-                        newoptonlist.push(opts_list[i]);
-
-                        // удаляем из старого
-                        delete opts_list[i];
-
-                        // копируем старый в новый
-                        for (var key in opts_list) {
-                            if (opts_list[key].tagName != null && opts_list[key].tagName.toUpperCase() == "OPTION") {
-                                // opts_list не массив если не делать данных проверок то в newoptonlist будет копироваться всё подряд функции свойства и т.д.
-                                newoptonlist.push(opts_list[key])
-                            }
-                        }
-
-                        // прервыаем основной цикл
-                        break;
-                    }
-                }
-
-                sel.html('').append(newoptonlist);
-            }
-
-            $('select[name=citylist]').change(onLocationChanged);
-
-            $('select#region_selector').change(function () {
-                var regvalue = null;
-                if (Modernizr.touch) {
-                    // код для десктопа
-                    regvalue = $(this).select2('data')[0].value;
-                } else {
-                    regvalue = $(this).select2('data').id;
-                }
-
-                $("#statistics-link").hide();
-
-                if (regvalue == "86") {
-                    hideLocationElements('div#tyumen_map', 'span#tyumen_town_list');
-                    hideLocationElements('div#yanao_map', 'span#yanao_town_list');
-                    showLocationElements('div#hmao_map', 'span#hmao_town_list');
-                    SortSelectCity('span#hmao_town_list');
-
-                    $("#statistics-link").show();
-                    $('#yanao_links').hide();
-                    $('#hmao_links').show();
-                    $('#yanao_news').hide();
-                    $('#hmao_news').show();
-                } else if (regvalue == "72") {
-                    showLocationElements('div#tyumen_map', 'span#tyumen_town_list');
-                    hideLocationElements('div#yanao_map', 'span#yanao_town_list');
-                    hideLocationElements('div#hmao_map', 'span#hmao_town_list');
-                    SortSelectCity('span#tyumen_town_list');
-                    $('#yanao_links').hide();
-                    $('#hmao_links').hide();
-                } else {
-                    hideLocationElements('div#hmao_map', 'span#hmao_town_list');
-                    hideLocationElements('div#tyumen_map', 'span#tyumen_town_list');
-                    showLocationElements('div#yanao_map', 'span#yanao_town_list');
-                    SortSelectCity('span#yanao_town_list');
-                    $('#hmao_links').hide();
-                    $('#yanao_links').show();
-                    $('#hmao_news').hide();
-                    $('#yanao_news').show();
-                }
-                onLocationChanged();
-            });
-
-            var location = window.getLocationCookie();
-            window.restorePreviousLocation('select#region_selector', "select[name='citylist']");
-
-            $('select#region_selector').change(function () {
-                $("select[name=citylist]:enabled")[0].selectedIndex = 0;
-                $("select[name=citylist]:enabled").trigger('change');
-            });
-
-            var regex = new RegExp("[\\?&]loginform=([^&#]*)"),
-                results = regex.exec(this.location.search);
-            if (results != null && results[1].toString() == "true")
-                $('.is-popup').addClass('is-visible');
-
-            $('.newmap').delegate('a', 'click', function (ev) {
-                $("select[name=citylist]:enabled").select2('data').id = $(this).text();
-                ev.preventDefault();
-                ev.stopPropagation();
-                $("select[name='citylist']").val($(this).text());
-                onLocationChanged();
-                $("#nextButton").click();
-            });
-
-
-
-        });
+			//	Запрет	повторного	нажатия	кнопок
+			var isSubmited = false;
+			$('div.buttons	input[type=submit]').attr('disabled', false);
+			$('tr#pb').hide();
+			$('div.buttons	input[type=submit]').click(function (e) {
+				if (!isSubmited) {
+					btn = $(this);
+					$('<input	/>').attr('type', 'hidden')
+					.attr('name', btn.attr('name'))
+					.attr('value', btn.value)
+					.appendTo('form');
+					$('tr#pb').show();
+					isSubmited = true;
+				}
+				else
+					return false;
+			});
+		});
   </script>
   <style>
    #rc-connect #rc-phone {
@@ -676,7 +552,7 @@
         <br/>
        </noscript>
        <div class="steps">
-        <div class="steps-item steps-item--active">
+        <a class="steps-item steps-item--done" href="/2016/">
          <div class="step">
           <span class="step-num slab">
            1
@@ -685,8 +561,8 @@
            Город
           </span>
          </div>
-        </div>
-        <div class="steps-item">
+        </a>
+        <div class="steps-item steps-item--active">
          <div class="step">
           <span class="step-num slab">
            2
@@ -737,288 +613,97 @@
          </div>
         </div>
        </div>
-       <h3 style="margin-bottom: 5px">
-        Выберите регион и город
+       <h3>
+        Выберите лечебное учреждение
        </h3>
-       <span class="form-label form-label--light form-label--inline">
-        Ваш регион:
-       </span>
-       <select class="select" id="region_selector">
-        <option selected="selected" value="86">
-         Ханты-Мансийский автономный округ
-        </option>
-        <option value="89">
-         Ямало-Ненецкий автономный округ
-        </option>
-        <option value="72">
-         Тюменская область
-        </option>
-       </select>
-       <div class="newmap newmap-yanao" id="yanao_map" style="display: none">
-        <a class="newmap-item newmap-city nadym" href="#nadym">
-         <span class="title">
-          Надым
-         </span>
-        </a>
-        <a class="newmap-item newmap-city novyurengoy" href="#novyurengoy">
-         <span class="title">
-          Новый Уренгой
-         </span>
-        </a>
-        <a class="newmap-item newmap-city noyabrsk" href="#noyabrsk">
-         <span class="title">
-          Ноябрьск
-         </span>
-        </a>
-        <a class="newmap-item newmap-city muzhi" href="#muzhi">
-         <span class="title">
-          Мужи
-         </span>
-        </a>
-        <a class="newmap-item newmap-city yarsale" href="#yarsale">
-         <span class="title">
-          Яр-Сале
-         </span>
+       <div class="crumbs">
+        <a href="/2016/">
+         г. Нижневартовск
         </a>
        </div>
-       <div class="newmap" id="hmao_map">
-        <a class="newmap-item newmap-city nizhnevartovsk" href="#nizhnevartovsk">
-         <span class="title">
-          Нижневартовск
-         </span>
-        </a>
-        <a class="newmap-item newmap-city megion" href="#megion">
-         <span class="title">
-          Мегион
-         </span>
-        </a>
-        <a class="newmap-item newmap-city raduzhniy" href="#raduzhniy">
-         <span class="title">
-          Радужный
-         </span>
-        </a>
-        <a class="newmap-item newmap-city kogalym" href="#kogalym">
-         <span class="title">
-          Когалым
-         </span>
-        </a>
-        <a class="newmap-item newmap-city langepas" href="#langepas">
-         <span class="title">
-          Лангепас
-         </span>
-        </a>
-        <a class="newmap-item newmap-city lyantor" href="#lyantor">
-         <span class="title">
-          Лянтор
-         </span>
-        </a>
-        <a class="newmap-item newmap-city nefteyugansk" href="#nefteyugansk">
-         <span class="title">
-          Нефтеюганск
-         </span>
-        </a>
-        <a class="newmap-item newmap-city vysokiy" href="#vysokiy">
-         <span class="title">
-          Высокий
-         </span>
-        </a>
-        <a class="newmap-item newmap-city pokachi" href="#pokachi">
-         <span class="title">
-          Покачи
-         </span>
-        </a>
-        <a class="newmap-item newmap-city poykovskiy" href="#poykovskiy">
-         <span class="title">
-          Пойковский
-         </span>
-        </a>
-        <a class="newmap-item newmap-city pytyah" href="#pytyah">
-         <span class="title">
-          Пыть-Ях
-         </span>
-        </a>
-        <a class="newmap-item newmap-city surgut" href="#surgut">
-         <span class="title">
-          Сургут
-         </span>
-        </a>
-        <a class="newmap-item newmap-city urai" href="#urai">
-         <span class="title">
-          Урай
-         </span>
-        </a>
-        <a class="newmap-item newmap-city hantymansiysk" href="#hantymansiysk">
-         <span class="title">
-          Ханты-Мансийск
-         </span>
-        </a>
-        <a class="newmap-item newmap-city yugorsk" href="#yugorsk">
-         <span class="title">
-          Югорск
-         </span>
-        </a>
-        <a class="newmap-item newmap-city mulymya" href="#mulymya">
-         <span class="title">
-          Мулымья
-         </span>
-        </a>
-        <a class="newmap-item newmap-city berezovo" href="#berezovo">
-         <span class="title">
-          Березово
-         </span>
-        </a>
-        <a class="newmap-item newmap-city mezhdurechenskiy" href="#mezhdurechenskiy">
-         <span class="title">
-          Междуреченский
-         </span>
-        </a>
-       </div>
-       <div class="newmap newmap-tyumen" id="tyumen_map" style="display: none">
-        <a class="newmap-item newmap-city tyumen" href="#tyumen">
-         <span class="title">
-          Тюмень
-         </span>
-        </a>
-        <a class="newmap-item newmap-city ishim" href="#ishim">
-         <span class="title">
-          Ишим
-         </span>
-        </a>
-        <a class="newmap-item newmap-city tobolsk" href="#tobolsk">
-         <span class="title">
-          Тобольск
-         </span>
-        </a>
-        <a class="newmap-item newmap-city yalutorovsk" href="#yalutorovsk">
-         <span class="title">
-          Ялуторовск
-         </span>
-        </a>
-        <a class="newmap-item newmap-city zavodoukovks" href="#zavodoukovks">
-         <span class="title">
-          Заводоуковск
-         </span>
-        </a>
-       </div>
-       <form action="/2016/" id="frmCity" method="post">
-        <div class="steps-control" style="margin-bottom: 12px; padding-top: 12px; clear: both">
-         <div class="steps-back" style="white-space: nowrap; position: relative; top: 5px;">
-          <div style="height: 33px">
-           <span class="form-label form-label--light form-label--inline">
-            Ваш город:
-           </span>
-           <span id="hmao_town_list">
-            <select class="select" name="citylist" style="margin: 0; width: 320px;">
-             <option value="Нижневартовск">
-              Нижневартовск
-             </option>
-             <option value="Мегион">
-              Мегион
-             </option>
-             <option value="Радужный">
-              Радужный
-             </option>
-             <option value="Когалым">
-              Когалым
-             </option>
-             <option value="Лангепас">
-              Лангепас
-             </option>
-             <option value="Лянтор">
-              Лянтор
-             </option>
-             <option value="Нефтеюганск">
-              Нефтеюганск
-             </option>
-             <option value="Высокий">
-              Высокий
-             </option>
-             <option value="Покачи">
-              Покачи
-             </option>
-             <option value="Пойковский">
-              Пойковский
-             </option>
-             <option value="Пыть-Ях">
-              Пыть-Ях
-             </option>
-             <option value="Сургут">
-              Сургут
-             </option>
-             <option value="Урай">
-              Урай
-             </option>
-             <option value="Ханты-Мансийск">
-              Ханты-Мансийск
-             </option>
-             <option value="Югорск">
-              Югорск
-             </option>
-             <option value="Мулымья">
-              Мулымья
-             </option>
-             <option value="Березово">
-              Березово
-             </option>
-             <option value="Междуреченский">
-              Междуреченский
-             </option>
-            </select>
-           </span>
-           <span id="yanao_town_list" style="display: none">
-            <select class="select" disabled="disabled" name="citylist" style="margin: 0; width: 320px;">
-             <option value="Надым">
-              Надым
-             </option>
-             <option value="Новый Уренгой">
-              Новый Уренгой
-             </option>
-             <option value="Ноябрьск">
-              Ноябрьск
-             </option>
-             <option value="Мужи">
-              Мужи
-             </option>
-             <option value="Яр-Сале">
-              Яр-Сале
-             </option>
-            </select>
-           </span>
-           <span id="tyumen_town_list" style="display: none">
-            <select class="select" disabled="disabled" name="citylist" style="margin: 0; width: 320px;">
-             <option value="Тюмень">
-              Тюмень
-             </option>
-             <option value="Ишим">
-              Ишим
-             </option>
-             <option value="Тобольск">
-              Тобольск
-             </option>
-             <option value="Ялуторовск">
-              Ялуторовск
-             </option>
-             <option value="Заводоуковск">
-              Заводоуковск
-             </option>
-            </select>
-           </span>
-          </div>
+       <form action="/2016/Rec/SelectDept" method="post">
+        <div>
+         <select class="select" id="departments" name="departments" style="width: 320px;">
+          <option value="NVTUB;153;3;0">
+           Поликлиника ПТД
+          </option>
+          <option value="NVGK1;106;1;0">
+           Женская консультация
+          </option>
+          <option value="NVPND;115;1;0">
+           Поликлиника ПНБ
+          </option>
+          <option value="NVDENT2;141;2;1">
+           Взрослая стомат. поликлиника корпус 1 (60 лет 47)
+          </option>
+          <option value="NVDENT2;141;1;1">
+           Взрослая стомат. поликлиника корпус 2 (Ленина 11)
+          </option>
+          <option value="NVDENT2;141;4;1">
+           Взрослая стомат. поликлиника корпус 3 (Медколледж)
+          </option>
+          <option value="NVDENT2;141;5;1">
+           Взрослая стомат. поликлиника корпус 4 (НВГУ)
+          </option>
+          <option value="NVONKO;117;4;0">
+           БУ "Нижневартовский онкологический диспансер"
+          </option>
+          <option value="NVDDEN;110;1;1">
+           Детская стомат. поликлиника корпус 1
+          </option>
+          <option value="NVDDEN;110;3;1">
+           Детская стомат. поликлиника корпус 2
+          </option>
+          <option value="NVRD;100;4;1">
+           Детская поликлиника №1
+          </option>
+          <option value="NVRD;100;5;1">
+           Детская поликлиника №2
+          </option>
+          <option value="NVRD;100;2;1">
+           Детская поликлиника №3
+          </option>
+          <option value="NVRD;100;3;1">
+           Детская поликлиника №4
+          </option>
+          <option value="NVRD;100;1;1">
+           Детская поликлиника №5
+          </option>
+          <option value="NVRD;100;10;1">
+           Дневной стационар
+          </option>
+          <option value="NVRD;100;7;1">
+           Центр Здоровья для Детей
+          </option>
+          <option value="NVLPU1;118;1;0">
+           Взрослая поликлиника №1
+          </option>
+          <option value="NVLPU1;118;2;0">
+           Взрослая поликлиника №2
+          </option>
+          <option value="NVLPU1;118;7;0">
+           Взрослая поликлиника №2 Отделение ОВП №2
+          </option>
+          <option value="NVLPU1;118;3;0">
+           Поликлиника №3
+          </option>
+          <option value="NVKVD;143;1;0">
+           Поликлиника КВД
+          </option>
+          <option value="NVKDC;147;1;0">
+           Перинатальный центр
+          </option>
+         </select>
+        </div>
+        <div class="steps-control">
+         <div class="steps-back">
+          <input class="btn btn--gray" name="backButton" type="submit" value="Назад"/>
          </div>
          <div class="steps-forward">
-          <input class="btn" id="nextButton" name="nextButton" type="submit" value="Продолжить"/>
+          <input class="btn" name="nextButton" type="submit" value="Продолжить"/>
          </div>
         </div>
        </form>
-       <div class="android_app_block">
-        Мобильное приложение
-        <a href="https://play.google.com/store/apps/details?id=ru.ugrazdrav.application.dbversion&amp;referrer=utm_source%3Dmedbox.ru%26utm_medium%3Dbutton%26utm_campaign%3Dpr" onclick="yaCounter41304969.reachGoal('medbox.mainpage.click.android'); return true;" target="_blank">
-         <img alt="Интернет-регистратура для Android" src="/2016/Content/images/google_play_ru.png"/>
-        </a>
-        <a href="https://itunes.apple.com/ru/app/medbox.ru-zapis-na-priem-k/id1089095338?l=en&amp;mt=8&amp;utm_source=medbox.ru&amp;utm_campaign=pr&amp;utm_medium=button" onclick="yaCounter41304969.reachGoal('medbox.mainpage.click.ios'); return true;" target="_blank">
-         <img alt="Интернет-регистратура для iOS" src="/2016/Content/images/badge-download-on-the-app-store-ru.svg"/>
-        </a>
-       </div>
       </div>
       <div class="asideRight">
        <div class="sep sep--l">
@@ -1036,21 +721,19 @@
          <div class="rightbar">
           <div class="pad_l">
            <h1>
-            О системе
+            Информация
            </h1>
            <p>
-            «Интернет-регистратура» - единая окружная система интернет-записи, которая
-            позволяет каждому застрахованному жителю ХМАО записаться на прием к врачу в
-            медицинские учреждения округа.
+            Из представленного списка выберите нужное вам медицинское учреждение и нажмите «Продолжить».
+           </p>
+           <p style="color: Red">
+            Если в списке учреждений отсутствует зарегистрированное в системе "Интернет-регистратура" учреждение, значит в настоящий момент отсутствует связь с данным учреждением, оно появится в списке как только связь будет восстановлена.
+           </p>
+           <p style="color: Red">
+            Если Вы хотите отменить имеющиеся у вас записи на прием, Вам необходимо выбрать учреждение, ввести свои данные и нажать кнопку «Продолжить».
            </p>
            <p>
-            Система объединяет запись на прием через регистратуру, терминал и интернет,что позволяет
-            врачу видеть список всех пациентов, записанных на прием любым из способов.
-           </p>
-           <p>
-            Лечебные учреждения размещают в системе информацию о своих ресурсах, актуальность
-            которой поддерживается в автоматическом режиме. В настоящий
-            момент времени система позволяет записаться к 1500 врачам.
+            Для перехода на форму ввода персональных данных нажмите кнопку «Продолжить».
            </p>
           </div>
          </div>
@@ -1072,8 +755,7 @@
       <br/>
       <!-- Yandex.Metrika informer -->
       <a href="https://metrika.yandex.ru/stat/?id=27732045&amp;from=informer" rel="nofollow" target="_blank">
-       <img alt="Яндекс.Метрика" onclick="try{Ya.Metrika.informer({i:this,id:27732045,lang:'ru'});return false}catch(e){}" src="//bs.yandex.ru/informer/27732045/3_1_FFFFFFFF_FFFFFFFF_0_pageviews" style="width:88px; height:31px; border:0;" title="Яндекс.Метрика: данные за сегодня (просмотры, визиты и уникальные посетители)">
-       </img>
+       <img alt="Яндекс.Метрика" onclick="try{Ya.Metrika.informer({i:this,id:27732045,lang:'ru'});return false}catch(e){}" src="//bs.yandex.ru/informer/27732045/3_1_FFFFFFFF_FFFFFFFF_0_pageviews" style="width:88px; height:31px; border:0;" title="Яндекс.Метрика: данные за сегодня (просмотры, визиты и уникальные посетители)"/>
       </a>
       <!-- /Yandex.Metrika informer -->
      </div>
