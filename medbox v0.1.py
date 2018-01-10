@@ -24,11 +24,11 @@ session_id = r.headers['Set-Cookie'][18:42]
 
 data = {}
 #data['nextButton'] = urllib.parse.quote('Продолжить')
-#data['citylist'] = urllib.parse.quote('Нижневартовск')
+#data['city_list'] = urllib.parse.quote('Нижневартовск')
 data['nextButton'] = 'Продолжить'
-data['citylist'] = 'Нижневартовск'
+data['city_list'] = 'Нижневартовск'
 
-s.headers['Set-Cookie'] = 'ASP.NET_SessionId=' + session_id + '; path=/; HttpOnly, __Region={"End":3000518655,"Region":"86","Name":"' + data['citylist'] + '"}; path=/; _ym_uid=1511438481466314529; _ga=GA1.2.1754532188.1511438481; _gid=GA1.2.418642800.1511438481; _ym_visorc_41304969=w; _ym_isad=2; _ym_visorc_27732045=w'
+s.headers['Set-Cookie'] = 'ASP.NET_SessionId=' + session_id + '; path=/; HttpOnly, __Region={"End":3000518655,"Region":"86","Name":"' + data['city_list'] + '"}; path=/; _ym_uid=1511438481466314529; _ga=GA1.2.1754532188.1511438481; _gid=GA1.2.418642800.1511438481; _ym_visorc_41304969=w; _ym_isad=2; _ym_visorc_27732045=w'
 
 chrome_headers = {
 	'ASP.NET_SessionId' : 'kffymwpjasf21gl3mpmw3wps',
@@ -63,14 +63,14 @@ chrome_headres = {
 	'Content-Type' : 'application/x-www-form-urlencoded',
 	'Referer' : 'https://medbox.ru/2016/'
 }
-#requests.cookies.remove_cookie_by_name(s.cookies, '__Region')
-#requests.cookies.merge_cookies(s.cookies, chrome_cookies)
+#requests.cookies.remove_cookie_by_name(session.cookies, '__Region')
+#requests.cookies.merge_cookies(session.cookies, chrome_cookies)
 
 r.headers['Set-Cookie'] = 'ASP.NET_SessionId=sogtxqjljuyfg25xaq5nlbc3; path=/; HttpOnly, __Region=%7B%22Region%22%3A%2286%22%2C%22Name%22%3A%22%D0%9D%D0%B8%D0%B6%D0%BD%D0%B5%D0%B2%D0%B0%D1%80%D1%82%D0%BE%D0%B2%D1%81%D0%BA%22%7D; path=/; _ym_uid=1509363136916671318; path=/; _ga=GA1.2.1083857719.1509363136; path=/'
 
 r2 = s.post(url=medurl, data=data, headers = {'Referer': r.url})
 
-#r2 = s.post(url=medurl, data=data, cookies = s.cookies, headers = s.headers)
+#r2 = session.post(url=medurl, data=data, cookies = session.cookies, headers = session.headers)
 print('r2:\n URL:', r2.url, r2.history, '\n', 'Status:', r2, '\n', 'Cookies:', r2.cookies.get_dict(), s.cookies.get_dict(), '\n')
 
 r3 = s.get('https://medbox.ru/2016/Rec/SelectDept', headers = {'Referer': r2.url})
