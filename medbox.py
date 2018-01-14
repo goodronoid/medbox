@@ -5,6 +5,7 @@ from bs4 import BeautifulSoup as bs
 # from lxml import html
 # import urllib
 import re, sys
+import medbox_schedule
 
 session = requests.Session()
 session.headers.update({
@@ -70,25 +71,28 @@ r = session.post(
     headers={'Referer': r.url})
 
 hospital_list = dict()
-print(bs(r.content, 'lxml').findAll('h3')[1].text, ':')  # Выберите лечебное учреждение:
+print("\n", bs(r.content, 'lxml').findAll('h3')[1].text, ':')  # Выберите лечебное учреждение:
 for x, xx in enumerate(bs(r.content, 'lxml').findAll('select')[0].findAll('option'), 1):
     hospital_list[x] = [xx.text, xx['value']]
     print(x, '->', xx.text)
 
 sys.stdout.write("\033[0;32m")  # green
-hospital = hospital_list[int(input())][1]
+x = hospital_list[int(input())]
+hospital = dict()
+hospital["name"] = x[0]
+hospital["alias"], hospital["lid"], hospital["dept"], hospital["XYN"] = x[1].split(";")
 sys.stdout.write("\033[0;33m")  # orange
 
 # 3 https://medbox.ru/2016/Rec/Identification
 r = session.post(
     url=r.url,
-    data={'nextButton': 'Продолжить', 'departments': hospital},
+    data={'nextButton': 'Продолжить', 'departments': ";".join((hospital["alias"], hospital["lid"], hospital["dept"], hospital["XYN"]))},
     headers={'Referer': r.url}
 )
 print('\n')
 
 std_in = sys.stdin
-f = open('../personal_data')
+f = open('../Sofi')
 sys.stdin = f
 SecondName = input("Введите Фамилию:\n")
 FirstName = input("Введите Имя:\n")
@@ -129,17 +133,20 @@ r = session.post(
 
 # print('r:\n URL:', r.url, r.history, '\n', 'Status:', r, '\n', 'Cookies:', r.cookies.get_dict(), session.cookies.get_dict(), '\n')
 
-# 4b 'https://medbox.ru/2016/Rec/CurrentRecords'
 if r.url == 'https://medbox.ru/2016/Rec/CheckMissedAppts':
     errtext = bs(r.content, 'lxml').find(style='color:Red')
     sys.stdout.write("\033[0;31m")  # red
-    print(' '.join(errtext.text.split()))
+    print()
+    problem_error_text = ' '.join(errtext.text.split()) ######################## FIX IT
+    print(problem_error_text)
     print('\n'.join(re.split('\n{1,} *', errtext.nextSibling.nextSibling.text)))
     sys.stdout.write("\033[0;33m")  # orange
+# 4b 'https://medbox.ru/2016/Rec/CurrentRecords'
     r = session.post(url=r.url, data={'nextButton': 'Продолжить'})
 
 xx = bs(r.content, 'lxml').find(name='div', attrs={'class': 'visit visit--old'})
-print("Ваши текущие приёмы:\n", re.search('([А-Яа-ё+]+ *)+', xx.text).group(0))
+problem_error_text = re.search('([А-Яа-ё+]+ *)+', xx.text).group(0) ###############     FIX IT
+print("Ваши текущие приёмы:\n", problem_error_text)
 
 # 5 'https://medbox.ru/2016/Rec/SelectSpec'
 r = session.post(url=r.url, data={'nextButton': 'Продолжить'})
@@ -150,6 +157,20 @@ xx = bs(r.content, 'lxml').find(name='select', attrs={"class": "select2-offscree
 # with open('medbox4_CheckMissedAppts.html', 'w', encoding='utf-8') as output_file:
 #     output_file.write(soup.prettify())
 
+doctors_list, medspec = medbox_schedule.get_schedule(city=city, alias=hospital["alias"], dept=hospital["dept"], name=hospital["name"], lid=hospital["lid"])
+
+if len(doctors_list) == 0:
+    print("\nСвободных мест нет!\n")
+    # ЗАПУСК ДЕМОНА АВТОЗАПИСИ
+
+# 6 https://medbox.ru/2016/Rec/SelectTime
+# Аргирова Мария Константиновна
+r = session.post(url=r.url, data={"doctor.medspecid": "-999", "doctor.doctorComplexId": "472;2", "infoChecked": "false", "nextButton": "Продолжить"})
+
+# 7 https://medbox.ru/2016/Rec/Complete
+# Вы хотите записаться на прием 31 января 2018 18:50, каб. 10.
+# Ваш врач — Аргирова Мария Константиновна, педиатр участковый, Детская поликлиника №2, г. Нижневартовск.
+r = session.post(url=r.url, data={"id_zapis": "9713067", "nextbutton": "Записаться"})
 
 sys.stdout.write("\033[0;32m")  # green
-input("КОНЕЦ")
+input("КОНЕЦ medbox")
