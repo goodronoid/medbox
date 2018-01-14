@@ -1,53 +1,49 @@
-
-
-
-
 <!DOCTYPE html>
 <html>
-
-<head id="Head1" runat="server">
-
-    
-    
-
-<title>Запись на прием, электронная регистратура Medbox, найди своего врача.</title>
-<meta name="description" content="Электронная регистратура Medbox, возможность записаться на прием к врачу, всегда актуальное расписание врачей, просто выбери свой город и запишись к врачу." />
-
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-
-    <meta name='yandex-verification' content='5fedb93ae7bc4d9c' />
-    <meta name="google-site-verification" content="nMXDsZ8hfbtXp4gUuiE0cLO9l3FmywUI-yRhMVYZ3pA" />
-    <meta name="google-site-verification" content="KI8FDEiQhxo0FdpSSsc6LmlFY7B3OTwntV6z35p_ldk" />
-    <meta name="yandex-verification" content="1021e22b6f28c109" />
-
-    <meta name="apple-itunes-app" content="app-id=1089095338">
-
-    <link href="/2016/favicon.ico" rel="icon" type="image/x-icon" />
-
-    <link href="/2016/Content/jquery-ui-1.8.18.custom.min.css" rel="stylesheet"/>
-<link href="/2016/Content/jqueryui.min.css" rel="stylesheet"/>
-
-    <link href="/2016/Content/assets/styles.css" rel="stylesheet"/>
-<link href="/2016/Content/assets/jquery.select2.css" rel="stylesheet"/>
-<link href="/2016/Content/assets/fix-old.css" rel="stylesheet"/>
-<link href="/2016/Content/assets/fonts/fonts.css" rel="stylesheet"/>
-
-    <script src="/2016/Scripts/jquery-1.11.1.js"></script>
-<script src="/2016/Scripts/jquery-ui.min.js"></script>
-<script src="/2016/Scripts/jquery.ui.datepicker-ru.min.js"></script>
-<script src="/2016/Scripts/jquery.validate.js"></script>
-<script src="/2016/Scripts/jquery.cookie.js"></script>
-<script src="/2016/Content/assets/jquery.select2.min.js"></script>
-<script src="/2016/Content/assets/img/icons.js"></script>
-<script src="/2016/Content/assets/script.js"></script>
-<script src="/2016/Scripts/jquery.inputmask.bundle.min.js"></script>
-<script src="/2016/Scripts/modernizr.custom.67089.js"></script>
-<script src="/2016/Scripts/share42.js"></script>
-<script src="/2016/Scripts/jquery.maskedinput.min.js"></script>
-
-
-    <script type="text/javascript">
-        // Для того чтобы переходить сразу на ту вкладку с которой открыли форму логина;
+ <head id="Head1" runat="server">
+  <title>
+   Запись на прием, электронная регистратура Medbox, найди своего врача.
+  </title>
+  <meta content="Электронная регистратура Medbox, возможность записаться на прием к врачу, всегда актуальное расписание врачей, просто выбери свой город и запишись к врачу." name="description"/>
+  <meta content="text/html; charset=utf-8" http-equiv="Content-Type"/>
+  <meta content="5fedb93ae7bc4d9c" name="yandex-verification"/>
+  <meta content="nMXDsZ8hfbtXp4gUuiE0cLO9l3FmywUI-yRhMVYZ3pA" name="google-site-verification"/>
+  <meta content="KI8FDEiQhxo0FdpSSsc6LmlFY7B3OTwntV6z35p_ldk" name="google-site-verification"/>
+  <meta content="1021e22b6f28c109" name="yandex-verification"/>
+  <meta content="app-id=1089095338" name="apple-itunes-app"/>
+  <link href="/2016/favicon.ico" rel="icon" type="image/x-icon"/>
+  <link href="/2016/Content/jquery-ui-1.8.18.custom.min.css" rel="stylesheet"/>
+  <link href="/2016/Content/jqueryui.min.css" rel="stylesheet"/>
+  <link href="/2016/Content/assets/styles.css" rel="stylesheet"/>
+  <link href="/2016/Content/assets/jquery.select2.css" rel="stylesheet"/>
+  <link href="/2016/Content/assets/fix-old.css" rel="stylesheet"/>
+  <link href="/2016/Content/assets/fonts/fonts.css" rel="stylesheet"/>
+  <script src="/2016/Scripts/jquery-1.11.1.js">
+  </script>
+  <script src="/2016/Scripts/jquery-ui.min.js">
+  </script>
+  <script src="/2016/Scripts/jquery.ui.datepicker-ru.min.js">
+  </script>
+  <script src="/2016/Scripts/jquery.validate.js">
+  </script>
+  <script src="/2016/Scripts/jquery.cookie.js">
+  </script>
+  <script src="/2016/Content/assets/jquery.select2.min.js">
+  </script>
+  <script src="/2016/Content/assets/img/icons.js">
+  </script>
+  <script src="/2016/Content/assets/script.js">
+  </script>
+  <script src="/2016/Scripts/jquery.inputmask.bundle.min.js">
+  </script>
+  <script src="/2016/Scripts/modernizr.custom.67089.js">
+  </script>
+  <script src="/2016/Scripts/share42.js">
+  </script>
+  <script src="/2016/Scripts/jquery.maskedinput.min.js">
+  </script>
+  <script type="text/javascript">
+   // Для того чтобы переходить сразу на ту вкладку с которой открыли форму логина;
         globalredirect = document.location.href;
         function restorePreviousLocation(regionSelector, citySelector) {
             var location = window.getLocationCookie();
@@ -82,10 +78,9 @@
 
             $.cookie('__Region', JSON.stringify(obj), { expires: 3650, path: '/' });
         }
-    </script>
-
-    <script>
-        $(document).ready(function () {
+  </script>
+  <script>
+   $(document).ready(function () {
             var hideStatisticsIfNeeded = function (event, regionValue, cityValue) {
                 if (regionValue && regionValue != "86") {
                     $("#statistics-link").hide();
@@ -99,14 +94,9 @@
 
             $(window).on('location:changed', hideStatisticsIfNeeded);
         });
-
-    </script>
-
-    
-    
-
-    <script type="text/javascript">
-        $(document).ready(function () {
+  </script>
+  <script type="text/javascript">
+   $(document).ready(function () {
             // Запрет повторного нажатия кнопок
             var isSubmited = false;
             $('div.steps-control input[type=submit]').attr('disabled', false);
@@ -125,24 +115,20 @@
                     return false;
             });
         });
-    </script>
-    <script type="text/javascript" src="/2016/Scripts/moment-with-locales.min.js"></script>
-
-   
-
-    
-    <style>
-        #rc-connect #rc-phone {
+  </script>
+  <script src="/2016/Scripts/moment-with-locales.min.js" type="text/javascript">
+  </script>
+  <style>
+   #rc-connect #rc-phone {
             display: none !important;
         }
-    </style>
-</head>
-
-<body>
-    <!-- банер со ссылкой на новый сайт -->
-<!-- Стили для этого банера, если нужно, можно просто вставить на другой сайт разметку и css-->
-<style>
-      .banner-new * {
+  </style>
+ </head>
+ <body>
+  <!-- банер со ссылкой на новый сайт -->
+  <!-- Стили для этого банера, если нужно, можно просто вставить на другой сайт разметку и css-->
+  <style>
+   .banner-new * {
           margin: 0;
           padding: 0;
           box-sizing: border-box;
@@ -263,100 +249,151 @@
           font-size: 13px;
           color: #ccc;
       }
-</style>
-
-<a href="https://medbox.ru?utm_source=medbox.ru&utm_medium=banner&utm_compaign=newsite" class="banner-new">
-
-    <div class="banner-new__inner">
-        <div class="banner-new__left-column">
-            <span>записаться еще быстрее!</span>
-            <strong>Medbox ❯</strong>
-        </div>
-        <div class="banner-new__right-column">
-            <div class="banner-new__wrap">
-                <div class="banner-new__btn">перейти</div>
-                <br>
-                <div class="banner-new__sub-text">Новая версия сайта</div>
-            </div>
-        </div>
+  </style>
+  <a class="banner-new" href="https://medbox.ru?utm_source=medbox.ru&amp;utm_medium=banner&amp;utm_compaign=newsite">
+   <div class="banner-new__inner">
+    <div class="banner-new__left-column">
+     <span>
+      записаться еще быстрее!
+     </span>
+     <strong>
+      Medbox ❯
+     </strong>
     </div>
-
-</a>
-
-<script>
-    document.querySelector('a.banner-new').href += "&utm_page=" + encodeURIComponent(location.pathname.substring(1))
-</script>
-
-    <div class="whopper">
-
-            <span style="position: absolute; right: 0; bottom: 190px;">1.0.0.3</span>
-
-        <div class="svgImages"></div>
-        <div class="wrap page">
-            <div class="head">
-                <div class="constrain">
-                    
-
-                    <div class="logotype slab">
-                        <a href="/2016/">
-                            <span class="logotype-image">
-                            </span>
-                            <span class="logotype-text">Интернет<br />регистратура</span>
-                        </a>
-                    </div>
-                    <div class="menu slab">
-                        <div class="menu-container">
-
-
-                            <a href="/2016/" class="menu-item menu-item--selected">
-                                <i class="menu-icon menu-icon--new-appointment"><svg><use xlink:href="#new-appointment" /></svg></i>
-                                <span class="menu-title">Записаться<br />на прием</span>
-                            </a>
-                            <span class="menu-div"></span>
-
-                            <a href="/2016/DoctorCall" class="menu-item">
-                                <i class="menu-icon menu-icon--at-home"><svg><use xlink:href="#at-home"></use></svg></i>
-                                <span class="menu-title">Вызвать врача<br />на дом</span>
-                            </a>
-                            <span class="menu-div"></span>
-
-                            <a href="/2016/Schedule" class="menu-item">
-                                <i class="menu-icon menu-icon--schedule"><svg><use xlink:href="#schedule"></use></svg></i>
-                                <span class="menu-title">Расписание<br />врачей</span>
-                            </a>
-                            <span class="menu-div"></span>
-
-                            <a href="/2016/Uchastok" class="menu-item">
-                                <i class="menu-icon menu-icon--find-hospital"><svg><use xlink:href="#find-hospital"></use></svg></i>
-                                <span class="menu-title">Найти<br />участок</span>
-                            </a>
-                            <span class="menu-div"></span>
-
-                            <a href="/2016/Ostatki" class="menu-item">
-                                <i class="menu-icon menu-icon--medicine"><svg><use xlink:href="#medicine"></use></svg></i>
-                                <span class="menu-title">Остатки льготных<br />лекарств</span>
-                            </a>
-
-                            <a href="/2016/Feedback" class="menu-feedback slab">Обратная связь</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="constrain">
-                <div class="personal">
-                    <div class="login">
-                        
-<script src="/2016/Scripts/jquery.maskedinput.min.js" type="text/javascript"></script>
-<script type="text/javascript">
-    $(function () {
+    <div class="banner-new__right-column">
+     <div class="banner-new__wrap">
+      <div class="banner-new__btn">
+       перейти
+      </div>
+      <br/>
+      <div class="banner-new__sub-text">
+       Новая версия сайта
+      </div>
+     </div>
+    </div>
+   </div>
+  </a>
+  <script>
+   document.querySelector('a.banner-new').href += "&utm_page=" + encodeURIComponent(location.pathname.substring(1))
+  </script>
+  <div class="whopper">
+   <span style="position: absolute; right: 0; bottom: 190px;">
+    1.0.0.3
+   </span>
+   <div class="svgImages">
+   </div>
+   <div class="wrap page">
+    <div class="head">
+     <div class="constrain">
+      <div class="logotype slab">
+       <a href="/2016/">
+        <span class="logotype-image">
+        </span>
+        <span class="logotype-text">
+         Интернет
+         <br>
+          регистратура
+         </br>
+        </span>
+       </a>
+      </div>
+      <div class="menu slab">
+       <div class="menu-container">
+        <a class="menu-item menu-item--selected" href="/2016/">
+         <i class="menu-icon menu-icon--new-appointment">
+          <svg>
+           <use xlink:href="#new-appointment">
+           </use>
+          </svg>
+         </i>
+         <span class="menu-title">
+          Записаться
+          <br/>
+          на прием
+         </span>
+        </a>
+        <span class="menu-div">
+        </span>
+        <a class="menu-item" href="/2016/DoctorCall">
+         <i class="menu-icon menu-icon--at-home">
+          <svg>
+           <use xlink:href="#at-home">
+           </use>
+          </svg>
+         </i>
+         <span class="menu-title">
+          Вызвать врача
+          <br/>
+          на дом
+         </span>
+        </a>
+        <span class="menu-div">
+        </span>
+        <a class="menu-item" href="/2016/Schedule">
+         <i class="menu-icon menu-icon--schedule">
+          <svg>
+           <use xlink:href="#schedule">
+           </use>
+          </svg>
+         </i>
+         <span class="menu-title">
+          Расписание
+          <br/>
+          врачей
+         </span>
+        </a>
+        <span class="menu-div">
+        </span>
+        <a class="menu-item" href="/2016/Uchastok">
+         <i class="menu-icon menu-icon--find-hospital">
+          <svg>
+           <use xlink:href="#find-hospital">
+           </use>
+          </svg>
+         </i>
+         <span class="menu-title">
+          Найти
+          <br/>
+          участок
+         </span>
+        </a>
+        <span class="menu-div">
+        </span>
+        <a class="menu-item" href="/2016/Ostatki">
+         <i class="menu-icon menu-icon--medicine">
+          <svg>
+           <use xlink:href="#medicine">
+           </use>
+          </svg>
+         </i>
+         <span class="menu-title">
+          Остатки льготных
+          <br/>
+          лекарств
+         </span>
+        </a>
+        <a class="menu-feedback slab" href="/2016/Feedback">
+         Обратная связь
+        </a>
+       </div>
+      </div>
+     </div>
+    </div>
+    <div class="constrain">
+     <div class="personal">
+      <div class="login">
+       <script src="/2016/Scripts/jquery.maskedinput.min.js" type="text/javascript">
+       </script>
+       <script type="text/javascript">
+        $(function () {
         $.mask.definitions['9'] = '';
         $.mask.definitions['d'] = '[0-9]';
 
         $("#login").mask("+7(ddd)ddd-dd-dd");
     });
-</script>
-<script type="text/javascript">
-    $(function () {
+       </script>
+       <script type="text/javascript">
+        $(function () {
         $func = function () {
             var Model = { login: $('#login').val(), password: $('#password').val(), RememberMe: $('#remcheck')[0].checked };
             if (Model.login != "" && Model.password != "") {
@@ -402,98 +439,118 @@
         });
         $('#logon_btn').click($func);
     });
-</script>
-
-
-    <a href="/2016/Cabinet/Account/LoginWithoutJS" class="login-signin is-popup-trigger" popup-id="authorize">Вход в систему</a>
-    <a href="/2016/Cabinet/Account/Create" class="login-signup">Регистрация</a>
-    <div class="is-popup is-popup--login" popup-id="authorize" tabindex="-1">
-        <h3 class="is-popup-title slab">Войти в систему</h3>
-        <p class="is-popup-text">Введите номер вашего телефона и пароль, указанный при регистрации.</p>
-        <form class="login-block" action="/2016/Cabinet/Account/Login" onsubmit=" return false; ">
-
-            <div>
-                <span>Вход с помощью:</span>
-                <span class="form-login-switch">
-                    <a href="https://esia.miacugra.ru/cas/login?service=https%3a%2f%2fmedbox.ru">СНИЛС</a>
-                </span>
-            </div>
-
-            <label class="form-item" id="phone-block">
-                <span class="form-label form-label--login">Логин:</span>
-                <input id="login" name="login" class="form-input textbox textbox--login is-first-focus" placeholder="Мобильный телефон" tabindex="1" />
-            </label>
-
-            <label class="form-item">
-                <span class="form-label form-label--login">Пароль:</span>
-                <input type="password" id="password" class="form-input textbox textbox--login" placeholder="Ваш пароль" tabindex="2" />
-            </label>
-
-            <a class="login-forgot" href="/2016/Cabinet/Account/Recover">Забыли пароль?</a>
-            <div class="form-error slab"></div>
-
-            <label class="login-remember">
-                <input type="checkbox" id="remcheck" checked='checked' />Запомнить меня
-            </label>
-            <div class="form-button">
-                <input id="logon_btn" type="button" class="btn btn--red" value="Войти" tabindex="3" />
-            </div>
+       </script>
+       <a class="login-signin is-popup-trigger" href="/2016/Cabinet/Account/LoginWithoutJS" popup-id="authorize">
+        Вход в систему
+       </a>
+       <a class="login-signup" href="/2016/Cabinet/Account/Create">
+        Регистрация
+       </a>
+       <div class="is-popup is-popup--login" popup-id="authorize" tabindex="-1">
+        <h3 class="is-popup-title slab">
+         Войти в систему
+        </h3>
+        <p class="is-popup-text">
+         Введите номер вашего телефона и пароль, указанный при регистрации.
+        </p>
+        <form action="/2016/Cabinet/Account/Login" class="login-block" onsubmit=" return false; ">
+         <div>
+          <span>
+           Вход с помощью:
+          </span>
+          <span class="form-login-switch">
+           <a href="https://esia.miacugra.ru/cas/login?service=https%3a%2f%2fmedbox.ru">
+            СНИЛС
+           </a>
+          </span>
+         </div>
+         <label class="form-item" id="phone-block">
+          <span class="form-label form-label--login">
+           Логин:
+          </span>
+          <input class="form-input textbox textbox--login is-first-focus" id="login" name="login" placeholder="Мобильный телефон" tabindex="1"/>
+         </label>
+         <label class="form-item">
+          <span class="form-label form-label--login">
+           Пароль:
+          </span>
+          <input class="form-input textbox textbox--login" id="password" placeholder="Ваш пароль" tabindex="2" type="password"/>
+         </label>
+         <a class="login-forgot" href="/2016/Cabinet/Account/Recover">
+          Забыли пароль?
+         </a>
+         <div class="form-error slab">
+         </div>
+         <label class="login-remember">
+          <input checked="checked" id="remcheck" type="checkbox"/>
+          Запомнить меня
+         </label>
+         <div class="form-button">
+          <input class="btn btn--red" id="logon_btn" tabindex="3" type="button" value="Войти"/>
+         </div>
         </form>
         <div class="login-register slab">
-            <a href="/2016/Cabinet/Account/Create">Я ещё не регистрировался</a>
+         <a href="/2016/Cabinet/Account/Create">
+          Я ещё не регистрировался
+         </a>
         </div>
-    </div>
-<div class="overlay"><div class="img"></div></div>
+       </div>
+       <div class="overlay">
+        <div class="img">
+        </div>
+       </div>
+      </div>
+      <div class="personalMenu">
+       <div class="personalMenu-item">
+        <a class="login-signin is-popup-trigger" href="/2016/Cabinet/Account/LoginWithoutJS" onclick="globalredirect='/2016/Cabinet/Private/Appointment';" popup-id="authorize">
+         Приёмы
+        </a>
+       </div>
+       <div class="personalMenu-item">
+        <a class="login-signin is-popup-trigger" href="/2016/Cabinet/Account/LoginWithoutJS" onclick="globalredirect='/2016/Cabinet/Analysis';" popup-id="authorize">
+         Исследования
+        </a>
+       </div>
+       <div class="personalMenu-item">
+        <a class="login-signin is-popup-trigger" href="/2016/Cabinet/Account/LoginWithoutJS" onclick="globalredirect='/2016/Cabinet/Lekar';" popup-id="authorize">
+         Назначения
+        </a>
+       </div>
+       <div class="personalMenu-item">
+        <a class="login-signin is-popup-trigger" href="/2016/Cabinet/Account/LoginWithoutJS" onclick="globalredirect='/2016/Cabinet/Inquiry';" popup-id="authorize">
+         Справки
+        </a>
+       </div>
+       <div class="personalMenu-item">
+        <a class="login-signin is-popup-trigger" href="/2016/Cabinet/Account/LoginWithoutJS" onclick="globalredirect='/2016/Cabinet/Inquiry';" popup-id="authorize">
+         Измерения
+        </a>
+       </div>
+      </div>
+     </div>
+     <div class="main">
+      <div class="asideLeft">
+      </div>
+      <div class="content">
+       <h1>
+        Запись на прием
+       </h1>
+       <noscript>
+        <p>
+         <b>
+          Вероятнее всего, у вас отключен JavaScript. Для корректной работы сервиса критически важно включить JavaScript в настройках (
+          <a href="http://help.yandex.ru/common/browsers-settings/browsers-java-js-settings.xml" target="_blank">
+           Как включить?
+          </a>
+          )
+         </b>
+        </p>
+        <br/>
+       </noscript>
+       <script language="javascript" type="text/javascript">
+        $(function(){
 
-
-
-                    </div>
-                    <div class="personalMenu">
-                        
-
-
-    <div class="personalMenu-item"><a href="/2016/Cabinet/Account/LoginWithoutJS" class="login-signin is-popup-trigger" onclick="globalredirect='/2016/Cabinet/Private/Appointment';" popup-id="authorize">Приёмы</a></div>
-    <div class="personalMenu-item"><a href="/2016/Cabinet/Account/LoginWithoutJS" class="login-signin is-popup-trigger" onclick="globalredirect='/2016/Cabinet/Analysis';" popup-id="authorize">Исследования</a></div>
-    <div class="personalMenu-item"><a href="/2016/Cabinet/Account/LoginWithoutJS" class="login-signin is-popup-trigger" onclick="globalredirect='/2016/Cabinet/Lekar';" popup-id="authorize">Назначения</a></div>
-    <div class="personalMenu-item"><a href="/2016/Cabinet/Account/LoginWithoutJS" class="login-signin is-popup-trigger" onclick="globalredirect='/2016/Cabinet/Inquiry';" popup-id="authorize">Справки</a></div>
-    <div class="personalMenu-item"><a href="/2016/Cabinet/Account/LoginWithoutJS" class="login-signin is-popup-trigger" onclick="globalredirect='/2016/Cabinet/Inquiry';" popup-id="authorize">Измерения</a></div>
-
-                    </div>
-                </div>
-                <div class="main">
-                        <div class="asideLeft">
-                            
-    
-
-
-
-                        </div>
-
-                    
-    
-
-                    
-    <div class="content">
-        
-
-    <h1>Запись на прием</h1>
-
-
-        <noscript>
-            <p>
-                <b>
-                    Вероятнее всего, у вас отключен JavaScript. Для корректной работы сервиса критически важно включить JavaScript в настройках (<a target="_blank" href="http://help.yandex.ru/common/browsers-settings/browsers-java-js-settings.xml">Как включить?</a>)
-                </b>
-            </p>
-            <br />
-        </noscript>
-        
-
-
-<script language="javascript" type="text/javascript">
-    $(function(){
-
-        var docList = [{"absentInfo":"У данного врача временно нет приема.","ExtensionData":{},"doctor":402,"doctorComplexId":null,"extra":"","group_doc_id":0,"group_doc_name":"","group_spec_id":0,"group_spec_name":"","hasAvailableTime":1,"infozapis":"","medspec":"педиатр участковый","medspecid":32,"name":"Эскендарова Насират Магомедовна","out_end_date":"01.01.0001","out_start_date":"01.01.0001","out_type":0,"recorddays":"0;2;3;","uch":3},{"absentInfo":"У данного врача временно нет приема.","ExtensionData":{},"doctor":388,"doctorComplexId":null,"extra":"","group_doc_id":0,"group_doc_name":"","group_spec_id":0,"group_spec_name":"","hasAvailableTime":1,"infozapis":"","medspec":"педиатр участковый","medspecid":32,"name":"Казачкова Татьяна Михайловна","out_end_date":"01.01.0001","out_start_date":"01.01.0001","out_type":0,"recorddays":"0;5;18;","uch":1},{"absentInfo":"У данного врача временно нет приема.","ExtensionData":{},"doctor":388,"doctorComplexId":null,"extra":"","group_doc_id":0,"group_doc_name":"","group_spec_id":0,"group_spec_name":"","hasAvailableTime":1,"infozapis":"","medspec":"педиатр участковый","medspecid":32,"name":"Казачкова Татьяна Михайловна","out_end_date":"01.01.0001","out_start_date":"01.01.0001","out_type":0,"recorddays":"0;5;18;","uch":11},{"absentInfo":"У данного врача временно нет приема.","ExtensionData":{},"doctor":7395,"doctorComplexId":null,"extra":"","group_doc_id":0,"group_doc_name":"","group_spec_id":0,"group_spec_name":"","hasAvailableTime":1,"infozapis":"","medspec":"педиатр участковый","medspecid":32,"name":"Бикбулатова Лиля Фаритовна","out_end_date":"01.01.0001","out_start_date":"01.01.0001","out_type":0,"recorddays":"0;2;18;","uch":5},{"absentInfo":"У данного врача временно нет приема.","ExtensionData":{},"doctor":389,"doctorComplexId":null,"extra":"","group_doc_id":0,"group_doc_name":"","group_spec_id":0,"group_spec_name":"","hasAvailableTime":1,"infozapis":"","medspec":"педиатр участковый","medspecid":32,"name":"Колесова Ольга Федоровна","out_end_date":"01.01.0001","out_start_date":"01.01.0001","out_type":0,"recorddays":"0;2;18;","uch":7},{"absentInfo":"У данного врача временно нет приема.","ExtensionData":{},"doctor":392,"doctorComplexId":null,"extra":"","group_doc_id":0,"group_doc_name":"","group_spec_id":0,"group_spec_name":"","hasAvailableTime":1,"infozapis":"","medspec":"педиатр участковый","medspecid":32,"name":"Миргород Елена Анатольевна","out_end_date":"01.01.0001","out_start_date":"01.01.0001","out_type":0,"recorddays":"0;5;18;","uch":8},{"absentInfo":"Врач находится в командировке с 06.11.2017 по 06.11.2017","ExtensionData":{},"doctor":398,"doctorComplexId":null,"extra":"","group_doc_id":0,"group_doc_name":"","group_spec_id":0,"group_spec_name":"","hasAvailableTime":1,"infozapis":"","medspec":"педиатр участковый","medspecid":32,"name":"Смольникова Галина Вильбертовна","out_end_date":"06.11.2017","out_start_date":"06.11.2017","out_type":4,"recorddays":"0;2;3;","uch":6},{"absentInfo":"У данного врача временно нет приема.","ExtensionData":{},"doctor":5235,"doctorComplexId":null,"extra":"","group_doc_id":0,"group_doc_name":"","group_spec_id":0,"group_spec_name":"","hasAvailableTime":1,"infozapis":"","medspec":"фельдшер","medspecid":94,"name":"Жиляева Марина Вениаминовна","out_end_date":"01.01.0001","out_start_date":"01.01.0001","out_type":0,"recorddays":"0;2;18;","uch":2},{"absentInfo":"У данного врача временно нет приема.","ExtensionData":{},"doctor":7395,"doctorComplexId":null,"extra":"","group_doc_id":0,"group_doc_name":"","group_spec_id":0,"group_spec_name":"","hasAvailableTime":1,"infozapis":"","medspec":"педиатр участковый","medspecid":32,"name":"Бикбулатова Лиля Фаритовна","out_end_date":"01.01.0001","out_start_date":"01.01.0001","out_type":0,"recorddays":"0;2;3;","uch":5},{"absentInfo":"У данного врача временно нет приема.","ExtensionData":{},"doctor":9796,"doctorComplexId":null,"extra":"","group_doc_id":0,"group_doc_name":"","group_spec_id":0,"group_spec_name":"","hasAvailableTime":1,"infozapis":"","medspec":"педиатр участковый","medspecid":32,"name":"Нурумбаева Айсылу Азаматовна","out_end_date":"01.01.0001","out_start_date":"01.01.0001","out_type":0,"recorddays":"0;5;18;","uch":10},{"absentInfo":"У данного врача временно нет приема.","ExtensionData":{},"doctor":388,"doctorComplexId":null,"extra":"","group_doc_id":0,"group_doc_name":"","group_spec_id":0,"group_spec_name":"","hasAvailableTime":1,"infozapis":"","medspec":"педиатр участковый","medspecid":32,"name":"Казачкова Татьяна Михайловна","out_end_date":"01.01.0001","out_start_date":"01.01.0001","out_type":0,"recorddays":"0;5;18;","uch":1},{"absentInfo":"У данного врача временно нет приема.","ExtensionData":{},"doctor":5235,"doctorComplexId":null,"extra":"","group_doc_id":0,"group_doc_name":"","group_spec_id":0,"group_spec_name":"","hasAvailableTime":1,"infozapis":"","medspec":"фельдшер","medspecid":94,"name":"Жиляева Марина Вениаминовна","out_end_date":"01.01.0001","out_start_date":"01.01.0001","out_type":0,"recorddays":"0;2;3;","uch":2},{"absentInfo":"У данного врача временно нет приема.","ExtensionData":{},"doctor":5115,"doctorComplexId":null,"extra":"","group_doc_id":0,"group_doc_name":"","group_spec_id":0,"group_spec_name":"","hasAvailableTime":1,"infozapis":"","medspec":"педиатр участковый","medspecid":32,"name":"Орлова Татьяна Ивановна","out_end_date":"01.01.0001","out_start_date":"01.01.0001","out_type":0,"recorddays":"0;2;18;","uch":9},{"absentInfo":"У данного врача временно нет приема.","ExtensionData":{},"doctor":935,"doctorComplexId":null,"extra":"","group_doc_id":0,"group_doc_name":"","group_spec_id":0,"group_spec_name":"","hasAvailableTime":1,"infozapis":"","medspec":"фельдшер","medspecid":94,"name":"Гафарова Маузида Музагитовна","out_end_date":"01.01.0001","out_start_date":"01.01.0001","out_type":0,"recorddays":"0;5;18;","uch":4},{"absentInfo":"У данного врача временно нет приема.","ExtensionData":{},"doctor":5115,"doctorComplexId":null,"extra":"","group_doc_id":0,"group_doc_name":"","group_spec_id":0,"group_spec_name":"","hasAvailableTime":1,"infozapis":"","medspec":"педиатр участковый","medspecid":32,"name":"Орлова Татьяна Ивановна","out_end_date":"01.01.0001","out_start_date":"01.01.0001","out_type":0,"recorddays":"0;2;3;","uch":9},{"absentInfo":"У данного врача временно нет приема.","ExtensionData":{},"doctor":392,"doctorComplexId":null,"extra":"","group_doc_id":0,"group_doc_name":"","group_spec_id":0,"group_spec_name":"","hasAvailableTime":1,"infozapis":"","medspec":"педиатр участковый","medspecid":32,"name":"Миргород Елена Анатольевна","out_end_date":"01.01.0001","out_start_date":"01.01.0001","out_type":0,"recorddays":"0;5;3;","uch":8},{"absentInfo":"Врач находится в командировке с 06.11.2017 по 06.11.2017","ExtensionData":{},"doctor":398,"doctorComplexId":null,"extra":"","group_doc_id":0,"group_doc_name":"","group_spec_id":0,"group_spec_name":"","hasAvailableTime":1,"infozapis":"","medspec":"педиатр участковый","medspecid":32,"name":"Смольникова Галина Вильбертовна","out_end_date":"06.11.2017","out_start_date":"06.11.2017","out_type":4,"recorddays":"0;2;18;","uch":6},{"absentInfo":"У данного врача временно нет приема.","ExtensionData":{},"doctor":388,"doctorComplexId":null,"extra":"","group_doc_id":0,"group_doc_name":"","group_spec_id":0,"group_spec_name":"","hasAvailableTime":1,"infozapis":"","medspec":"педиатр участковый","medspecid":32,"name":"Казачкова Татьяна Михайловна","out_end_date":"01.01.0001","out_start_date":"01.01.0001","out_type":0,"recorddays":"0;5;18;","uch":11},{"absentInfo":"У данного врача временно нет приема.","ExtensionData":{},"doctor":388,"doctorComplexId":null,"extra":"","group_doc_id":0,"group_doc_name":"","group_spec_id":0,"group_spec_name":"","hasAvailableTime":1,"infozapis":"","medspec":"педиатр участковый","medspecid":32,"name":"Казачкова Татьяна Михайловна","out_end_date":"01.01.0001","out_start_date":"01.01.0001","out_type":0,"recorddays":"0;5;18;","uch":0},{"absentInfo":"У данного врача временно нет приема.","ExtensionData":{},"doctor":9796,"doctorComplexId":null,"extra":"","group_doc_id":0,"group_doc_name":"","group_spec_id":0,"group_spec_name":"","hasAvailableTime":1,"infozapis":"","medspec":"педиатр участковый","medspecid":32,"name":"Нурумбаева Айсылу Азаматовна","out_end_date":"01.01.0001","out_start_date":"01.01.0001","out_type":0,"recorddays":"0;5;3;","uch":10}];
+        var docList = [{"absentInfo":"У данного врача временно нет приема.","ExtensionData":{},"doctor":555,"doctorComplexId":null,"extra":"","group_doc_id":0,"group_doc_name":"","group_spec_id":0,"group_spec_name":"","hasAvailableTime":1,"infozapis":"","medspec":"педиатр участковый","medspecid":32,"name":"Шкварчук Гузель Гадилевна","out_end_date":"01.01.0001","out_start_date":"01.01.0001","out_type":0,"recorddays":"1;5;13;","uch":8},{"absentInfo":"У данного врача временно нет приема.","ExtensionData":{},"doctor":9815,"doctorComplexId":null,"extra":"","group_doc_id":0,"group_doc_name":"","group_spec_id":0,"group_spec_name":"","hasAvailableTime":1,"infozapis":"","medspec":"педиатр участковый","medspecid":32,"name":"Приходько Татьяна Николаевна","out_end_date":"01.01.0001","out_start_date":"01.01.0001","out_type":0,"recorddays":"1;5;13;","uch":6},{"absentInfo":"У данного врача временно нет приема.","ExtensionData":{},"doctor":459,"doctorComplexId":null,"extra":"","group_doc_id":0,"group_doc_name":"","group_spec_id":0,"group_spec_name":"","hasAvailableTime":1,"infozapis":"","medspec":"педиатр участковый","medspecid":32,"name":"Бывалец Татьяна Николаевна","out_end_date":"01.01.0001","out_start_date":"01.01.0001","out_type":0,"recorddays":"0;5;18;","uch":5},{"absentInfo":"У данного врача временно нет приема.","ExtensionData":{},"doctor":464,"doctorComplexId":null,"extra":"","group_doc_id":0,"group_doc_name":"","group_spec_id":0,"group_spec_name":"","hasAvailableTime":1,"infozapis":"","medspec":"педиатр участковый","medspecid":32,"name":"Лапина Наталья Ивановна","out_end_date":"01.01.0001","out_start_date":"01.01.0001","out_type":0,"recorddays":"0;5;18;","uch":13},{"absentInfo":"У данного врача временно нет приема.","ExtensionData":{},"doctor":9735,"doctorComplexId":null,"extra":"","group_doc_id":0,"group_doc_name":"","group_spec_id":0,"group_spec_name":"","hasAvailableTime":1,"infozapis":"","medspec":"педиатр участковый","medspecid":32,"name":"Романова Нина Александровна","out_end_date":"01.01.0001","out_start_date":"01.01.0001","out_type":0,"recorddays":"0;5;18;","uch":4},{"absentInfo":"У данного врача временно нет приема.","ExtensionData":{},"doctor":470,"doctorComplexId":null,"extra":"","group_doc_id":0,"group_doc_name":"","group_spec_id":0,"group_spec_name":"","hasAvailableTime":1,"infozapis":"","medspec":"педиатр участковый","medspecid":32,"name":"Файзрахманова Клара Ахатовна","out_end_date":"01.01.0001","out_start_date":"01.01.0001","out_type":0,"recorddays":"0;5;18;","uch":12},{"absentInfo":"У данного врача временно нет приема.","ExtensionData":{},"doctor":462,"doctorComplexId":null,"extra":"","group_doc_id":0,"group_doc_name":"","group_spec_id":0,"group_spec_name":"","hasAvailableTime":1,"infozapis":"","medspec":"педиатр участковый","medspecid":32,"name":"Каракулова Татьяна Николаевна","out_end_date":"01.01.0001","out_start_date":"01.01.0001","out_type":0,"recorddays":"0;5;18;","uch":11},{"absentInfo":"У данного врача временно нет приема.","ExtensionData":{},"doctor":462,"doctorComplexId":null,"extra":"","group_doc_id":0,"group_doc_name":"","group_spec_id":0,"group_spec_name":"","hasAvailableTime":1,"infozapis":"","medspec":"педиатр участковый","medspecid":32,"name":"Каракулова Татьяна Николаевна","out_end_date":"01.01.0001","out_start_date":"01.01.0001","out_type":0,"recorddays":"1;2;13;","uch":11},{"absentInfo":"У данного врача временно нет приема.","ExtensionData":{},"doctor":472,"doctorComplexId":null,"extra":"","group_doc_id":0,"group_doc_name":"","group_spec_id":0,"group_spec_name":"","hasAvailableTime":1,"infozapis":"","medspec":"педиатр участковый","medspecid":32,"name":"Аргирова Мария Константиновна","out_end_date":"01.01.0001","out_start_date":"01.01.0001","out_type":0,"recorddays":"0;5;18;","uch":2},{"absentInfo":"У данного врача временно нет приема.","ExtensionData":{},"doctor":472,"doctorComplexId":null,"extra":"","group_doc_id":0,"group_doc_name":"","group_spec_id":0,"group_spec_name":"","hasAvailableTime":1,"infozapis":"","medspec":"педиатр участковый","medspecid":32,"name":"Аргирова Мария Константиновна","out_end_date":"01.01.0001","out_start_date":"01.01.0001","out_type":0,"recorddays":"1;5;13;","uch":2},{"absentInfo":"У данного врача временно нет приема.","ExtensionData":{},"doctor":468,"doctorComplexId":null,"extra":"","group_doc_id":0,"group_doc_name":"","group_spec_id":0,"group_spec_name":"","hasAvailableTime":1,"infozapis":"","medspec":"педиатр участковый","medspecid":32,"name":"Романова Нина Александровна","out_end_date":"01.01.0001","out_start_date":"01.01.0001","out_type":0,"recorddays":"0;5;18;","uch":10},{"absentInfo":"Врач на больничном с 09.01.2018","ExtensionData":{},"doctor":9942,"doctorComplexId":null,"extra":"","group_doc_id":0,"group_doc_name":"","group_spec_id":0,"group_spec_name":"","hasAvailableTime":0,"infozapis":"","medspec":"фельдшер","medspecid":94,"name":"Сарсенбаева Динара Кувандыковна","out_end_date":"01.01.0001","out_start_date":"09.01.2018","out_type":1,"recorddays":"0;5;18;","uch":0},{"absentInfo":"У данного врача временно нет приема.","ExtensionData":{},"doctor":470,"doctorComplexId":null,"extra":"","group_doc_id":0,"group_doc_name":"","group_spec_id":0,"group_spec_name":"","hasAvailableTime":1,"infozapis":"","medspec":"педиатр участковый","medspecid":32,"name":"Файзрахманова Клара Ахатовна","out_end_date":"01.01.0001","out_start_date":"01.01.0001","out_type":0,"recorddays":"1;2;13;","uch":12},{"absentInfo":"У данного врача временно нет приема.","ExtensionData":{},"doctor":464,"doctorComplexId":null,"extra":"","group_doc_id":0,"group_doc_name":"","group_spec_id":0,"group_spec_name":"","hasAvailableTime":1,"infozapis":"","medspec":"педиатр участковый","medspecid":32,"name":"Лапина Наталья Ивановна","out_end_date":"01.01.0001","out_start_date":"01.01.0001","out_type":0,"recorddays":"1;2;13;","uch":13},{"absentInfo":"У данного врача временно нет приема.","ExtensionData":{},"doctor":9815,"doctorComplexId":null,"extra":"","group_doc_id":0,"group_doc_name":"","group_spec_id":0,"group_spec_name":"","hasAvailableTime":1,"infozapis":"","medspec":"педиатр участковый","medspecid":32,"name":"Приходько Татьяна Николаевна","out_end_date":"01.01.0001","out_start_date":"01.01.0001","out_type":0,"recorddays":"0;5;18;","uch":6},{"absentInfo":"У данного врача временно нет приема.","ExtensionData":{},"doctor":9815,"doctorComplexId":null,"extra":"","group_doc_id":0,"group_doc_name":"","group_spec_id":0,"group_spec_name":"","hasAvailableTime":1,"infozapis":"","medspec":"педиатр участковый","medspecid":32,"name":"Приходько Татьяна Николаевна","out_end_date":"01.01.0001","out_start_date":"01.01.0001","out_type":0,"recorddays":"0;5;18;","uch":0},{"absentInfo":"Врач на больничном с 09.01.2018","ExtensionData":{},"doctor":9942,"doctorComplexId":null,"extra":"","group_doc_id":0,"group_doc_name":"","group_spec_id":0,"group_spec_name":"","hasAvailableTime":0,"infozapis":"","medspec":"фельдшер","medspecid":94,"name":"Сарсенбаева Динара Кувандыковна","out_end_date":"01.01.0001","out_start_date":"09.01.2018","out_type":1,"recorddays":"0;2;13;","uch":0},{"absentInfo":"У данного врача временно нет приема.","ExtensionData":{},"doctor":9735,"doctorComplexId":null,"extra":"","group_doc_id":0,"group_doc_name":"","group_spec_id":0,"group_spec_name":"","hasAvailableTime":1,"infozapis":"","medspec":"педиатр участковый","medspecid":32,"name":"Романова Нина Александровна","out_end_date":"01.01.0001","out_start_date":"01.01.0001","out_type":0,"recorddays":"1;5;13;","uch":4}];
 
         if (docList.length == 0) {
             $("#InfoZapis").append("<p style='color:red'>К сожалению, для данного учреждения отсутствуют врачи, у которых есть свободное время приема.</p>");
@@ -650,157 +707,190 @@
 
         clearErrors = true;
     });
-</script>
-
-
-<div class="steps">
-            <a class="steps-item steps-item--done" href=/2016/>
-                <div class="step">
-                    <span class="step-num slab">1</span>
-                    <span class="step-label">Город</span>
-                </div>
-            </a>
-            <a class="steps-item steps-item--done" href=/2016/Rec/SelectDept>
-                <div class="step">
-                    <span class="step-num slab">2</span>
-                    <span class="step-label">Учреждение</span>
-                </div>
-            </a>
-            <a class="steps-item steps-item--done" href=/2016/Rec/Identification>
-                <div class="step">
-                    <span class="step-num slab">3</span>
-                    <span class="step-label">Ваши данные</span>
-                </div>
-            </a>
-            <a class="steps-item steps-item--done" href=/2016/Rec/CurrentRecords>
-                <div class="step">
-                    <span class="step-num slab">4</span>
-                    <span class="step-label">Приемы</span>
-                </div>
-            </a>
-            <div class="steps-item steps-item--active">
-                <div class="step">
-                    <span class="step-num slab">5</span>
-                    <span class="step-label">Специалист</span>
-                </div>
-            </div>
-            <div class="steps-item">
-                <div class="step">
-                    <span class="step-num slab">6</span>
-                    <span class="step-label">Дата и время</span>
-                </div>
-            </div>
-</div>
-<h3>
-  Выберите специалиста
-</h3>
-<div class="crumbs">
-    <a href="/2016/">г. Нижневартовск</a>
-    <a href="/2016/Rec/SelectDept">Детская поликлиника №1</a>
-</div>
-<div id="pb"><img src="/2016/Content/images/pb.gif" width="16" height="16" /> Пожалуйста, подождите...</div>
-<form action="/2016/Rec/SelectSpec" method="post">    <div class="steps-select">
-        <select class="sel select" id="doctor_medspecid" name="doctor.medspecid" style="width: 30%;"></select>
-    </div>
-    <div class="steps-select">
-        <select class="sel select" id="doctor_doctorComplexId" name="doctor.doctorComplexId" style="width:98%"></select>
-    </div>
-    <div id="InfoZapis" style="margin-bottom:12px; word-break:break-all;"></div>
-    <p>
-        График работы врачей можно посмотреть в разделе <a href="/2016/Schedule?city=%D0%9D%D0%B8%D0%B6%D0%BD%D0%B5%D0%B2%D0%B0%D1%80%D1%82%D0%BE%D0%B2%D1%81%D0%BA&amp;alias=NVRD&amp;dept=4&amp;name=%D0%94%D0%B5%D1%82%D1%81%D0%BA%D0%B0%D1%8F%20%D0%BF%D0%BE%D0%BB%D0%B8%D0%BA%D0%BB%D0%B8%D0%BD%D0%B8%D0%BA%D0%B0%20%E2%84%961&amp;lid=100" style="top:0">Расписание</a>.
-
-    </p>
-    <div id="InfoZapisRequirement" style="margin-bottom:12px;">
-        <input id="infoChecked" name="infoChecked" type="checkbox" value="true" /><input name="infoChecked" type="hidden" value="false" />  с информацией о приеме ознакомлен
-    </div>
-    <div id="absentInfo" class="absentInfo" style="margin-bottom:12px;"></div>
-    <div>
-        <span class="error" id="Span1">
-            
-            
-        </span>
-    </div>
-    <div class="steps-control">
-        <div class="steps-back">
-            <input type="submit" class="btn btn--gray" name="backButton" value="Назад" />
+       </script>
+       <div class="steps">
+        <a class="steps-item steps-item--done" href="/2016/">
+         <div class="step">
+          <span class="step-num slab">
+           1
+          </span>
+          <span class="step-label">
+           Город
+          </span>
+         </div>
+        </a>
+        <a class="steps-item steps-item--done" href="/2016/Rec/SelectDept">
+         <div class="step">
+          <span class="step-num slab">
+           2
+          </span>
+          <span class="step-label">
+           Учреждение
+          </span>
+         </div>
+        </a>
+        <a class="steps-item steps-item--done" href="/2016/Rec/Identification">
+         <div class="step">
+          <span class="step-num slab">
+           3
+          </span>
+          <span class="step-label">
+           Ваши данные
+          </span>
+         </div>
+        </a>
+        <a class="steps-item steps-item--done" href="/2016/Rec/CurrentRecords">
+         <div class="step">
+          <span class="step-num slab">
+           4
+          </span>
+          <span class="step-label">
+           Приемы
+          </span>
+         </div>
+        </a>
+        <div class="steps-item steps-item--active">
+         <div class="step">
+          <span class="step-num slab">
+           5
+          </span>
+          <span class="step-label">
+           Специалист
+          </span>
+         </div>
         </div>
-        <div class="steps-forward">
-            <input type="submit" class="btn" name="nextButton" id="nextButton" value="Продолжить" />
+        <div class="steps-item">
+         <div class="step">
+          <span class="step-num slab">
+           6
+          </span>
+          <span class="step-label">
+           Дата и время
+          </span>
+         </div>
         </div>
-    </div>
-</form>
-
-
-
-        
-    </div>
-
-                        <div class="asideRight">
-
-                            
-            <div class="sep sep--l"></div>
-            <div class="asideRight-block">
-                <div class="newsBlock" id="news_block">
-                    <div class="leftbar">
-                        <div class="pad_l">
-                            <div class="line">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="line"></div>
-                        <div class="rightbar">
-                            <div class="pad_l">
-                                
-
-    <h1>Информация</h1>
-    <p>Для выбора специалиста укажите его специальность, выберите фамилию врача, к которому Вам необходимо записаться на прием.</p>
-    <p style="color: Red">На сайте отображаются врачи, у которых есть свободное время приема.</p>
-
-
-                            </div>
-                        </div>
-                </div>
-            </div>
-
-                        </div>
-                    
-    
-
-                    
-    
-
-                    <div class="clr"></div>
-                </div>
-            </div>
+       </div>
+       <h3>
+        Выберите специалиста
+       </h3>
+       <div class="crumbs">
+        <a href="/2016/">
+         г. Нижневартовск
+        </a>
+        <a href="/2016/Rec/SelectDept">
+         Детская поликлиника №2
+        </a>
+       </div>
+       <div id="pb">
+        <img height="16" src="/2016/Content/images/pb.gif" width="16"/>
+        Пожалуйста, подождите...
+       </div>
+       <form action="/2016/Rec/SelectSpec" method="post">
+        <div class="steps-select">
+         <select class="sel select" id="doctor_medspecid" name="doctor.medspecid" style="width: 30%;">
+         </select>
         </div>
-
-
-        <div class="footer">
-            <div class="constrain">
-                <div class="copyright">
-                    © 2017<br />
-                    «Интернет-регистратура»
-                    <br />
-                    <br />
-
-						<!-- Yandex.Metrika informer -->
-                        <a href="https://metrika.yandex.ru/stat/?id=27732045&amp;from=informer" target="_blank" rel="nofollow">
-                            <img src="//bs.yandex.ru/informer/27732045/3_1_FFFFFFFF_FFFFFFFF_0_pageviews"
-                                 style="width:88px; height:31px; border:0;" alt="Яндекс.Метрика" title="Яндекс.Метрика: данные за сегодня (просмотры, визиты и уникальные посетители)" onclick="try{Ya.Metrika.informer({i:this,id:27732045,lang:'ru'});return false}catch(e){}" />
-                        </a>
-						<!-- /Yandex.Metrika informer -->
-                </div>
-                <div class="footerMenu slab">
-  <a href="/2016/News" class="footerMenu-item">Новости</a> 
-  <a href="/2016/Departments" class="footerMenu-item">Учреждения</a> 
-  <a href="/2016/Information" class="footerMenu-item">О сайте</a> 
-
-  <a id="statistics-link" href="/2016/Statistics" class="footerMenu-item">Статистика</a> 
-  <a href="/2016/Zhnvls" class="footerMenu-item">Цены на ЖНВЛП</a>                 </div>
-
-                
-<style>
-.social {
+        <div class="steps-select">
+         <select class="sel select" id="doctor_doctorComplexId" name="doctor.doctorComplexId" style="width:98%">
+         </select>
+        </div>
+        <div id="InfoZapis" style="margin-bottom:12px; word-break:break-all;">
+        </div>
+        <p>
+         График работы врачей можно посмотреть в разделе
+         <a href="/2016/Schedule?city=%D0%9D%D0%B8%D0%B6%D0%BD%D0%B5%D0%B2%D0%B0%D1%80%D1%82%D0%BE%D0%B2%D1%81%D0%BA&amp;alias=NVRD&amp;dept=5&amp;name=%D0%94%D0%B5%D1%82%D1%81%D0%BA%D0%B0%D1%8F%20%D0%BF%D0%BE%D0%BB%D0%B8%D0%BA%D0%BB%D0%B8%D0%BD%D0%B8%D0%BA%D0%B0%20%E2%84%962&amp;lid=100" style="top:0">
+          Расписание
+         </a>
+         .
+        </p>
+        <div id="InfoZapisRequirement" style="margin-bottom:12px;">
+         <input id="infoChecked" name="infoChecked" type="checkbox" value="true"/>
+         <input name="infoChecked" type="hidden" value="false"/>
+         с информацией о приеме ознакомлен
+        </div>
+        <div class="absentInfo" id="absentInfo" style="margin-bottom:12px;">
+        </div>
+        <div>
+         <span class="error" id="Span1">
+         </span>
+        </div>
+        <div class="steps-control">
+         <div class="steps-back">
+          <input class="btn btn--gray" name="backButton" type="submit" value="Назад"/>
+         </div>
+         <div class="steps-forward">
+          <input class="btn" id="nextButton" name="nextButton" type="submit" value="Продолжить"/>
+         </div>
+        </div>
+       </form>
+      </div>
+      <div class="asideRight">
+       <div class="sep sep--l">
+       </div>
+       <div class="asideRight-block">
+        <div class="newsBlock" id="news_block">
+         <div class="leftbar">
+          <div class="pad_l">
+           <div class="line">
+           </div>
+          </div>
+         </div>
+         <div class="line">
+         </div>
+         <div class="rightbar">
+          <div class="pad_l">
+           <h1>
+            Информация
+           </h1>
+           <p>
+            Для выбора специалиста укажите его специальность, выберите фамилию врача, к которому Вам необходимо записаться на прием.
+           </p>
+           <p style="color: Red">
+            На сайте отображаются врачи, у которых есть свободное время приема.
+           </p>
+          </div>
+         </div>
+        </div>
+       </div>
+      </div>
+      <div class="clr">
+      </div>
+     </div>
+    </div>
+   </div>
+   <div class="footer">
+    <div class="constrain">
+     <div class="copyright">
+      © 2018
+      <br/>
+      «Интернет-регистратура»
+      <br/>
+      <br/>
+      <!-- Yandex.Metrika informer -->
+      <a href="https://metrika.yandex.ru/stat/?id=27732045&amp;from=informer" rel="nofollow" target="_blank">
+       <img alt="Яндекс.Метрика" onclick="try{Ya.Metrika.informer({i:this,id:27732045,lang:'ru'});return false}catch(e){}" src="//bs.yandex.ru/informer/27732045/3_1_FFFFFFFF_FFFFFFFF_0_pageviews" style="width:88px; height:31px; border:0;" title="Яндекс.Метрика: данные за сегодня (просмотры, визиты и уникальные посетители)"/>
+      </a>
+      <!-- /Yandex.Metrika informer -->
+     </div>
+     <div class="footerMenu slab">
+      <a class="footerMenu-item" href="/2016/News">
+       Новости
+      </a>
+      <a class="footerMenu-item" href="/2016/Departments">
+       Учреждения
+      </a>
+      <a class="footerMenu-item" href="/2016/Information">
+       О сайте
+      </a>
+      <a class="footerMenu-item" href="/2016/Statistics" id="statistics-link">
+       Статистика
+      </a>
+      <a class="footerMenu-item" href="/2016/Zhnvls">
+       Цены на ЖНВЛП
+      </a>
+     </div>
+     <style>
+      .social {
     font-size: 0;
     float: right;
     margin-top: 20px;
@@ -916,50 +1006,44 @@
 .social--old-site .social__link svg * {
     fill: white;
 }
-</style>
-<div class="social social--old-site">
-    <a class="social__link fb" href="https://www.facebook.com/medbox.ru/" target="_blank" title="Наша страница в facebook">
-        <svg xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 425.2 425.2">
-            <path d="M236.4 372.1V231.8h47.1l7.1-54.7h-54.1v-34.9c0-15.8 4.4-26.6 27.1-26.6h29V66.7c-5-.7-22.2-2.2-42.2-2.2-41.7 0-70.3 25.5-70.3 72.3v40.3h-47.2v54.7H180v140.3h56.4z"></path>
-        </svg>
-    </a>
-    <a class="social__link vk" href="https://vk.com/public119041958" target="_blank" title="Наша страница в контакте">
-        <svg xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 425.2 425.2">
-            <path d="M209.2 309.2h19.2s5.8-.6 8.8-3.8c2.7-2.9 2.6-8.4 2.6-8.4s-.4-25.7 11.6-29.5c11.8-3.7 26.9 24.9 42.9 35.9 12.1 8.3 21.3 6.5 21.3 6.5l42.9-.6s22.4-1.4 11.8-19c-.9-1.4-6.2-13-31.9-36.9-26.9-24.9-23.3-20.9 9.1-64.1 19.7-26.3 27.6-42.3 25.1-49.2-2.3-6.5-16.9-4.8-16.9-4.8l-48.3.3s-3.6-.5-6.2 1.1-4.3 5.2-4.3 5.2-7.6 20.3-17.8 37.6c-21.5 36.5-30.1 38.4-33.6 36.2-8.2-5.3-6.1-21.2-6.1-32.5 0-35.4 5.4-50.1-10.4-53.9-5.2-1.3-9.1-2.1-22.5-2.2-17.2-.2-31.8.1-40 4.1-5.5 2.7-9.7 8.7-7.1 9 3.2.4 10.4 1.9 14.2 7.2 4.9 6.7 4.8 21.8 4.8 21.8s2.8 41.6-6.6 46.8c-6.5 3.5-15.4-3.7-34.6-36.8-9.8-17-17.2-35.7-17.2-35.7s-1.4-3.5-4-5.4c-3.1-2.3-7.4-3-7.4-3l-45.9.3s-6.9.2-9.4 3.2c-2.3 2.7-.2 8.2-.2 8.2s35.9 84 76.6 126.3c37.1 38.6 79.5 36.1 79.5 36.1z">
-            </path>
-        </svg>
-    </a>
-    <a class="social__link ok" href="https://ok.ru/group/53065879584896" target="_blank" title="Наша страница в одноклассниках">
-        <svg xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 425.2 425.2">
-            <path d="M214.1 226.9c39.3 0 71.2-31.9 71.2-71.1 0-39.2-31.9-71.2-71.2-71.2-39.2 0-71.2 31.9-71.2 71.2 0 39.2 31.9 71.1 71.2 71.1zm0-100.6c16.2 0 29.5 13.2 29.5 29.5 0 16.2-13.2 29.5-29.5 29.5-16.2 0-29.5-13.2-29.5-29.5s13.2-29.5 29.5-29.5zm28.8 158.6c14.5-3.3 28.5-9 41.3-17.1 9.7-6.1 12.7-19 6.5-28.7-6.1-9.8-19-12.7-28.7-6.6-29.1 18.3-66.7 18.3-95.8 0-9.8-6.1-22.6-3.2-28.7 6.6-6.1 9.7-3.2 22.6 6.5 28.7 12.9 8.1 26.8 13.8 41.3 17.1l-39.8 39.8c-8.1 8.1-8.1 21.3 0 29.5 4.1 4.1 9.4 6.1 14.7 6.1 5.3 0 10.7-2 14.8-6.1l39.1-39.1 39.1 39.1c8.1 8.1 21.3 8.1 29.5 0 8.1-8.1 8.1-21.3 0-29.5l-39.8-39.8z"></path>
-        </svg>
-    </a>
-    <a class="social__link tw" href="https://twitter.com/MEDBOX_NEWS" target="_blank" title="Наша страница в twitter">
-        <svg xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 425.2 425.2">
-            <path d="M359.1 125.2c-10.2 4.5-21.2 7.6-32.8 9 11.8-7.1 20.8-18.3 25.1-31.6-11 6.5-23.3 11.3-36.3 13.9-10.4-11.1-25.3-18-41.7-18-31.5 0-57.1 25.6-57.1 57.1 0 4.5.5 8.8 1.5 13-47.5-2.4-89.5-25.1-117.7-59.7-4.9 8.4-7.7 18.2-7.7 28.7 0 19.8 10.1 37.3 25.4 47.5-9.4-.3-18.2-2.9-25.9-7.1v.7c0 27.7 19.7 50.7 45.8 56-4.8 1.3-9.8 2-15 2-3.7 0-7.3-.4-10.7-1 7.3 22.7 28.4 39.2 53.3 39.7-19.5 15.3-44.2 24.4-70.9 24.4-4.6 0-9.2-.3-13.6-.8 25.3 16.2 55.3 25.7 87.5 25.7 105 0 162.5-87 162.5-162.5 0-2.5-.1-4.9-.2-7.4 11.2-8.1 20.8-18.1 28.5-29.6z"></path>
-        </svg>
-    </a>
-</div>
-
-
-
-                <p class="siteInfo">
-                    Расписание работы врачей, свободное время для записи на приём, остатки льготных лекарственных средств в аптечных пунктах города, реестр цен на жизненно необходимые и важнейшие лекарственные препараты предоставляются медицинскими учреждениями, за их наличие и достоверность администрация сайта ответственности не несёт.
-                </p>
-            </div>
-
-            <!-- RedHelper -->
-            <script id="rhlpscrtg" type="text/javascript" charset="utf-8" async="async"
-                    src="https://web.redhelper.ru/service/main.js?c=medbox">
-            </script>
-            <!--/Redhelper -->
-
-            
-
-    
-                <!-- Yandex.Metrika counter -->
+     </style>
+     <div class="social social--old-site">
+      <a class="social__link fb" href="https://www.facebook.com/medbox.ru/" target="_blank" title="Наша страница в facebook">
+       <svg version="1.1" viewbox="0 0 425.2 425.2" xmlns="http://www.w3.org/2000/svg">
+        <path d="M236.4 372.1V231.8h47.1l7.1-54.7h-54.1v-34.9c0-15.8 4.4-26.6 27.1-26.6h29V66.7c-5-.7-22.2-2.2-42.2-2.2-41.7 0-70.3 25.5-70.3 72.3v40.3h-47.2v54.7H180v140.3h56.4z">
+        </path>
+       </svg>
+      </a>
+      <a class="social__link vk" href="https://vk.com/public119041958" target="_blank" title="Наша страница в контакте">
+       <svg version="1.1" viewbox="0 0 425.2 425.2" xmlns="http://www.w3.org/2000/svg">
+        <path d="M209.2 309.2h19.2s5.8-.6 8.8-3.8c2.7-2.9 2.6-8.4 2.6-8.4s-.4-25.7 11.6-29.5c11.8-3.7 26.9 24.9 42.9 35.9 12.1 8.3 21.3 6.5 21.3 6.5l42.9-.6s22.4-1.4 11.8-19c-.9-1.4-6.2-13-31.9-36.9-26.9-24.9-23.3-20.9 9.1-64.1 19.7-26.3 27.6-42.3 25.1-49.2-2.3-6.5-16.9-4.8-16.9-4.8l-48.3.3s-3.6-.5-6.2 1.1-4.3 5.2-4.3 5.2-7.6 20.3-17.8 37.6c-21.5 36.5-30.1 38.4-33.6 36.2-8.2-5.3-6.1-21.2-6.1-32.5 0-35.4 5.4-50.1-10.4-53.9-5.2-1.3-9.1-2.1-22.5-2.2-17.2-.2-31.8.1-40 4.1-5.5 2.7-9.7 8.7-7.1 9 3.2.4 10.4 1.9 14.2 7.2 4.9 6.7 4.8 21.8 4.8 21.8s2.8 41.6-6.6 46.8c-6.5 3.5-15.4-3.7-34.6-36.8-9.8-17-17.2-35.7-17.2-35.7s-1.4-3.5-4-5.4c-3.1-2.3-7.4-3-7.4-3l-45.9.3s-6.9.2-9.4 3.2c-2.3 2.7-.2 8.2-.2 8.2s35.9 84 76.6 126.3c37.1 38.6 79.5 36.1 79.5 36.1z">
+        </path>
+       </svg>
+      </a>
+      <a class="social__link ok" href="https://ok.ru/group/53065879584896" target="_blank" title="Наша страница в одноклассниках">
+       <svg version="1.1" viewbox="0 0 425.2 425.2" xmlns="http://www.w3.org/2000/svg">
+        <path d="M214.1 226.9c39.3 0 71.2-31.9 71.2-71.1 0-39.2-31.9-71.2-71.2-71.2-39.2 0-71.2 31.9-71.2 71.2 0 39.2 31.9 71.1 71.2 71.1zm0-100.6c16.2 0 29.5 13.2 29.5 29.5 0 16.2-13.2 29.5-29.5 29.5-16.2 0-29.5-13.2-29.5-29.5s13.2-29.5 29.5-29.5zm28.8 158.6c14.5-3.3 28.5-9 41.3-17.1 9.7-6.1 12.7-19 6.5-28.7-6.1-9.8-19-12.7-28.7-6.6-29.1 18.3-66.7 18.3-95.8 0-9.8-6.1-22.6-3.2-28.7 6.6-6.1 9.7-3.2 22.6 6.5 28.7 12.9 8.1 26.8 13.8 41.3 17.1l-39.8 39.8c-8.1 8.1-8.1 21.3 0 29.5 4.1 4.1 9.4 6.1 14.7 6.1 5.3 0 10.7-2 14.8-6.1l39.1-39.1 39.1 39.1c8.1 8.1 21.3 8.1 29.5 0 8.1-8.1 8.1-21.3 0-29.5l-39.8-39.8z">
+        </path>
+       </svg>
+      </a>
+      <a class="social__link tw" href="https://twitter.com/MEDBOX_NEWS" target="_blank" title="Наша страница в twitter">
+       <svg version="1.1" viewbox="0 0 425.2 425.2" xmlns="http://www.w3.org/2000/svg">
+        <path d="M359.1 125.2c-10.2 4.5-21.2 7.6-32.8 9 11.8-7.1 20.8-18.3 25.1-31.6-11 6.5-23.3 11.3-36.3 13.9-10.4-11.1-25.3-18-41.7-18-31.5 0-57.1 25.6-57.1 57.1 0 4.5.5 8.8 1.5 13-47.5-2.4-89.5-25.1-117.7-59.7-4.9 8.4-7.7 18.2-7.7 28.7 0 19.8 10.1 37.3 25.4 47.5-9.4-.3-18.2-2.9-25.9-7.1v.7c0 27.7 19.7 50.7 45.8 56-4.8 1.3-9.8 2-15 2-3.7 0-7.3-.4-10.7-1 7.3 22.7 28.4 39.2 53.3 39.7-19.5 15.3-44.2 24.4-70.9 24.4-4.6 0-9.2-.3-13.6-.8 25.3 16.2 55.3 25.7 87.5 25.7 105 0 162.5-87 162.5-162.5 0-2.5-.1-4.9-.2-7.4 11.2-8.1 20.8-18.1 28.5-29.6z">
+        </path>
+       </svg>
+      </a>
+     </div>
+     <p class="siteInfo">
+      Расписание работы врачей, свободное время для записи на приём, остатки льготных лекарственных средств в аптечных пунктах города, реестр цен на жизненно необходимые и важнейшие лекарственные препараты предоставляются медицинскими учреждениями, за их наличие и достоверность администрация сайта ответственности не несёт.
+     </p>
+    </div>
+    <!-- RedHelper -->
+    <script async="async" charset="utf-8" id="rhlpscrtg" src="https://web.redhelper.ru/service/main.js?c=medbox" type="text/javascript">
+    </script>
+    <!--/Redhelper -->
+    <!-- Yandex.Metrika counter -->
     <script type="text/javascript">
-					(function (d, w, c) {
+     (function (d, w, c) {
 						(w[c] = w[c] || []).push(function() {
 							try {
 								w.yaCounter41304969 = new Ya.Metrika({
@@ -985,12 +1069,14 @@
 						} else { f(); }
 					})(document, window, "yandex_metrika_callbacks");
     </script>
-                <noscript><div><img src="https://mc.yandex.ru/watch/41304969" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
-                <!-- /Yandex.Metrika counter -->
-
-                
-                <script>
-                    (function (i, s, o, g, r, a, m) {
+    <noscript>
+     <div>
+      <img alt="" src="https://mc.yandex.ru/watch/41304969" style="position:absolute; left:-9999px;"/>
+     </div>
+    </noscript>
+    <!-- /Yandex.Metrika counter -->
+    <script>
+     (function (i, s, o, g, r, a, m) {
                         i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
                             (i[r].q = i[r].q || []).push(arguments)
                         }, i[r].l = 1 * new Date(); a = s.createElement(o),
@@ -999,13 +1085,10 @@
 
                     ga('create', 'UA-53732792-1', 'auto');
                     ga('send', 'pageview');
-
-                </script>
-
-                
-                <!-- Yandex.Metrika counter -->
-                <script type="text/javascript">
-                    (function (d, w, c) {
+    </script>
+    <!-- Yandex.Metrika counter -->
+    <script type="text/javascript">
+     (function (d, w, c) {
                         (w[c] = w[c] || []).push(function () {
                             try {
                                 w.yaCounter27732045 = new Ya.Metrika({
@@ -1030,16 +1113,14 @@
                             d.addEventListener("DOMContentLoaded", f, false);
                         } else { f(); }
                     })(document, window, "yandex_metrika_callbacks");
-                </script>
-                <noscript><div><img src="//mc.yandex.ru/watch/27732045" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
-                <!-- /Yandex.Metrika counter -->
-
-            
-    
-
-
-        </div>
-
-    </div>
-</body>
+    </script>
+    <noscript>
+     <div>
+      <img alt="" src="//mc.yandex.ru/watch/27732045" style="position:absolute; left:-9999px;"/>
+     </div>
+    </noscript>
+    <!-- /Yandex.Metrika counter -->
+   </div>
+  </div>
+ </body>
 </html>
