@@ -5,13 +5,10 @@ from bs4 import BeautifulSoup as bs
 # from lxml import html
 # import urllib
 import re, sys
-import medbox_schedule
+import medbox_schedule, medbox_requests
 
 session = requests.Session()
 session.headers.update({
-    # 'Accept' : 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8',
-    # 'Accept-Encoding' : 'gzip,deflate,sdch',
-    # 'Accept-Language' : 'ru-RU,ru;q=0.8,en-US;q=0.6,en;q=0.4',
     'User-Agent': 'Mozilla/5.0 (Windows NT 10.0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3112.90 Safari/537.36'
 })
 
@@ -20,55 +17,17 @@ r = session.get('https://medbox.ru/2016/')
 
 # session_id = r.headers['Set-Cookie'][18:42]
 
-sys.stdout.write("\033[0;33m")  # orange
-# print('\n' + bs(r.content, 'lxml').findAll('h3')[1].text + ':\n')
-print("Выберите город и регион:\n \nРегион:")
+user_region, city = medbox_requests.choose_your_city(r)
 
-print("00 -> Список всех городов")
-for x in bs(r.content, 'lxml').find('select', attrs={'id': 'region_selector'}).findAll('option'):
-    print(x['value'], "->", x.text)
-
-sys.stdout.write("\033[0;32m")  # green
-user_region = input()
-sys.stdout.write("\033[0;33m")  # orange
-
-print('\nГоргород:')
-city_list = dict()
-
-# need REFACTORING (copy-pasting)
-if user_region == '86': # Первый в списке ХМАО
-    for x, xx in enumerate(bs(r.content, 'lxml').findAll('select')[1].findAll('option'), 1):
-        print(x, '->', xx.text)
-        city_list[x] = xx.text
-elif user_region == '89': # Второй в списке ЯНАО
-    for x, xx in enumerate(bs(r.content, 'lxml').findAll('select')[2].findAll('option'), 1):
-        print(x, '->', xx.text)
-        city_list[x] = xx.text
-elif user_region == '72': # Третий в списке Тмн
-    for x, xx in enumerate(bs(r.content, 'lxml').findAll('select')[3].findAll('option'), 1):
-        print(x, '->', xx.text)
-        city_list[x] = xx.text
-elif user_region == '00':
-    lst = []
-    for i in range(1, 4):
-        for xx in bs(r.content, 'lxml').findAll('select')[i].findAll('option'):
-            lst.append(xx.text)
-    for x, xx in enumerate(sorted(lst), 1):
-        print(x, '->', xx)
-        city_list[x] = xx
-else:
-    raise Exception('Надо выбрать один из предложенных вариантов. Попробуйте ещё раз.')  # FIX FIX FIX
-
-
-sys.stdout.write("\033[0;32m")  # green
-city = city_list[int(input())]
-sys.stdout.write("\033[0;33m")  # orange
+steps_dict = {
+    'https://medbox.ru/2016/': {
+        'next_url': 'https://medbox.ru/2016/Rec/SelectDept',
+        'data': {'nextButton': 'Продолжить', 'citylist': city}
+    }
+}
 
 # 2 'https://medbox.ru/2016/Rec/SelectDept'
-r = session.post(
-    url=r.url,
-    data={'nextButton': 'Продолжить', 'citylist': city},
-    headers={'Referer': r.url})
+session, r = medbox_requests.rqst(session, r, steps_dict[r.url]['data'])
 
 hospital_list = dict()
 print("\n", bs(r.content, 'lxml').findAll('h3')[1].text, ':')  # Выберите лечебное учреждение:
@@ -137,7 +96,7 @@ if r.url == 'https://medbox.ru/2016/Rec/CheckMissedAppts':
     errtext = bs(r.content, 'lxml').find(style='color:Red')
     sys.stdout.write("\033[0;31m")  # red
     print()
-    problem_error_text = ' '.join(errtext.text.split()) ######################## FIX IT
+    problem_error_text = ' '.join(errtext.text.split()) ######################## FIX IT Каждое предолжение с новой строки
     print(problem_error_text)
     print('\n'.join(re.split('\n{1,} *', errtext.nextSibling.nextSibling.text)))
     sys.stdout.write("\033[0;33m")  # orange
@@ -145,12 +104,15 @@ if r.url == 'https://medbox.ru/2016/Rec/CheckMissedAppts':
     r = session.post(url=r.url, data={'nextButton': 'Продолжить'})
 
 xx = bs(r.content, 'lxml').find(name='div', attrs={'class': 'visit visit--old'})
-problem_error_text = re.search('([А-Яа-ё+]+ *)+', xx.text).group(0) ###############     FIX IT
+problem_error_text = re.search('([А-Яа-ё+]+ *)+', xx.text).group(0) ###############     FIX IT Не работает пока списка приёмов, только их отсутствиеы
 print("Ваши текущие приёмы:\n", problem_error_text)
 
 # 5 'https://medbox.ru/2016/Rec/SelectSpec'
 r = session.post(url=r.url, data={'nextButton': 'Продолжить'})
 xx = bs(r.content, 'lxml').find(name='select', attrs={"class": "select2-offscreen"})
+
+# FIX FIX FIX
+# ВЗЯТЬ СПИСОК ВРАЧЕЙ СО СТРАНИЦЫ /SelectSpec, а не /Schedule/DocSearch модуля medbox_schedule
 
 # # просто сохраним страницу в html-файл:
 # soup = bs(r.content, 'html.parser')
