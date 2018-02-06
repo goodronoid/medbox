@@ -7,6 +7,8 @@ from bs4 import BeautifulSoup as bs
 import re, sys
 import medbox_schedule, medbox_requests
 
+personal_data_dict = medbox_requests.personal_data()
+
 session = requests.Session()
 session.headers.update({
     'User-Agent': 'Mozilla/5.0 (Windows NT 10.0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3112.90 Safari/537.36'
@@ -17,12 +19,27 @@ r = session.get('https://medbox.ru/2016/')
 
 # session_id = r.headers['Set-Cookie'][18:42]
 
-user_region, city = medbox_requests.choose_your_city(r)
+city = medbox_requests.choose_your_city(r)
 
 steps_dict = {
     'https://medbox.ru/2016/': {
         'next_url': 'https://medbox.ru/2016/Rec/SelectDept',
-        'data': {'nextButton': 'Продолжить', 'citylist': city}
+        'data': {'citylist': city}
+    },
+    'https://medbox.ru/2016/Rec/SelectDept': {
+        'next_url': 'https://medbox.ru/2016/Rec/Identification',
+        'data': {}
+    },
+    'https://medbox.ru/2016/Rec/Identification': {
+        'next_url': 'https://medbox.ru/2016/Rec/CurrentRecords',
+        'data': personal_data_dict
+    },
+    'https://medbox.ru/2016/Rec/CheckMissedAppts': {
+        'next_url': 'https://medbox.ru/2016/Rec/CurrentRecords',
+        'data': {}
+    },
+    'https://medbox.ru/2016/Rec/CurrentRecords': {
+
     }
 }
 
@@ -43,46 +60,12 @@ hospital["alias"], hospital["lid"], hospital["dept"], hospital["XYN"] = x[1].spl
 sys.stdout.write("\033[0;33m")  # orange
 
 # 3 https://medbox.ru/2016/Rec/Identification
-r = session.post(
-    url=r.url,
-    data={'nextButton': 'Продолжить', 'departments': ";".join((hospital["alias"], hospital["lid"], hospital["dept"], hospital["XYN"]))},
-    headers={'Referer': r.url}
-)
-print('\n')
+session, r = medbox_requests.rqst(session, r, {'nextButton': 'Продолжить', 'departments': ";".join((hospital["alias"], hospital["lid"], hospital["dept"], hospital["XYN"]))})
 
-std_in = sys.stdin
-f = open('../Sofi')
-sys.stdin = f
-SecondName = input("Введите Фамилию:\n")
-FirstName = input("Введите Имя:\n")
-MiddleName = input("Введите Отчество:\n")
-DateOfBirth = input("Дата рождения (в формате ДД.ММ.ГГГГ):\n")
-PolicySerNum = input("№ медицинского полиса:\n")
-PhoneNumber = input("Номер телефона (в формате +7 (ХХХ) ХХХ-ХХ-ХХ):\n")
-sendSMS = input("Получать СМС-уведомления (true/false):\n")
-sys.stdin = std_in
+# print('\n')
 
 # 4 'https://medbox.ru/2016/Rec/CurrentRecords'
-r = session.post(
-    url=r.url,
-    data={
-        'person.SecondName': SecondName,
-        'person.FirstName': FirstName,
-        'person.MiddleName': MiddleName,
-        'person.DateOfBirth': DateOfBirth,
-        'person.PolicySerNum': PolicySerNum,
-        'person.PhoneNumber': PhoneNumber,
-        'person.sendSMS': sendSMS,
-        # 'person.sendSMS' : 'false',
-        'person.SaveData': 'true',
-        # 'person.SaveData' : 'false',
-        'person.Agreement': 'true',
-        # 'person.Agreement' : 'false',
-        'nextButton': 'Продолжить'
-        # 'nextButton': ''
-    },
-    headers={'Referer': r.url}
-)
+session, r = medbox_requests.rqst(session, r, steps_dict[r.url]['data'])
 
 # Error:
 # Сервис идентификации ТФОМС недоступен. Попробуйте повторить попытку позднее.
@@ -100,11 +83,12 @@ if r.url == 'https://medbox.ru/2016/Rec/CheckMissedAppts':
     print(problem_error_text)
     print('\n'.join(re.split('\n{1,} *', errtext.nextSibling.nextSibling.text)))
     sys.stdout.write("\033[0;33m")  # orange
+
 # 4b 'https://medbox.ru/2016/Rec/CurrentRecords'
-    r = session.post(url=r.url, data={'nextButton': 'Продолжить'})
+    session, r = medbox_requests.rqst(session, r, steps_dict[r.url]['data'])
 
 xx = bs(r.content, 'lxml').find(name='div', attrs={'class': 'visit visit--old'})
-problem_error_text = re.search('([А-Яа-ё+]+ *)+', xx.text).group(0) ###############     FIX IT Не работает пока списка приёмов, только их отсутствиеы
+problem_error_text = re.search('([А-Яа-ё+]+ *)+', xx.text).group(0) ############### FIX IT Не работает если список != 1
 print("Ваши текущие приёмы:\n", problem_error_text)
 
 # 5 'https://medbox.ru/2016/Rec/SelectSpec'

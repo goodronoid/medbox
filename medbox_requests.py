@@ -10,6 +10,7 @@ import medbox_schedule
 
 def choose_your_city(r):
     sys.stdout.write("\033[0;33m")  # orange
+    print("\nКуда записываем?\n")
     print("Выберите город и регион:\n \nРегион:")
 
     print("00 -> Список всех городов")
@@ -52,10 +53,11 @@ def choose_your_city(r):
     city = city_list[int(input())]
     sys.stdout.write("\033[0;33m")  # orange
 
-    return user_region, city
+    return city
 
 
 def rqst(s, r, data):
+    data.update({'nextButton': 'Продолжить'})
     r = s.post(
         url=r.url,
         data=data,
@@ -63,3 +65,26 @@ def rqst(s, r, data):
     )
 
     return s, r
+
+def personal_data():
+    sys.stdout.write("\033[0;33m")  # orange
+    print('\nКого записываем?\n')
+    std_in = sys.stdin
+    f = open('../Sasha')
+    sys.stdin = f
+    personal_data_dict = dict()
+    personal_data_dict['person.SecondName'] = input("Введите Фамилию:\n")
+    personal_data_dict['person.FirstName'] = input("Введите Имя:\n")
+    personal_data_dict['person.MiddleName'] = input("Введите Отчество:\n")
+    personal_data_dict['person.DateOfBirth'] = input("Дата рождения (в формате ДД.ММ.ГГГГ):\n")
+    personal_data_dict['person.PolicySerNum'] = input("№ медицинского полиса:\n")
+    personal_data_dict['person.PhoneNumber'] = input("Номер телефона (в формате +7 (ХХХ) ХХХ-ХХ-ХХ):\n")
+    personal_data_dict['person.sendSMS'] = input("Получать СМС-уведомления (true/false):\n")
+    sys.stdin = std_in
+    f.close()
+
+    personal_data_dict['person.SaveData'] = 'true'
+    personal_data_dict['person.Agreement'] = 'true'
+    personal_data_dict['nextButton'] = 'Продолжить'
+
+    return personal_data_dict
