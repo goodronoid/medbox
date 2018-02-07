@@ -57,14 +57,35 @@ def choose_your_city(r):
 
 
 def rqst(s, r, data):
-    data.update({'nextButton': 'Продолжить'})
-    r = s.post(
-        url=r.url,
-        data=data,
-        headers={'Referer': r.url}
-    )
+
+    # check registration
+    check = bs(r.content, "lxml").find(attrs={"class": "authorized"})
+
+    # res_log = bs(r.content, "lxml").find(attrs={"class": "authorized"}).a.text.strip()
+    # print("Вы авторизованы как:", res_log)
+    #
+    # # Введите ваш СНИЛС
+    # res_nolog = bs(nor.content, "lxml").find(
+    #     attrs={"class": "is-popup is-popup--login", "popup-id": "authorize"}).p.text.strip()
+
+    if not check:
+        s, r = login_by_snils(s, r)
+
+    elif check:
+        print("Вы авторизованы как:", check.a.text.strip())
+
+    if r.ok:
+        data.update({'nextButton': 'Продолжить'})
+        r = s.post(
+            url=r.url,
+            data=data,
+            headers={'Referer': r.url}
+        )
+    else:
+        print("HTTP ERROR!!! Status:", r.status_code, "URL:", r.url)
 
     return s, r
+
 
 def personal_data():
     sys.stdout.write("\033[0;33m")  # orange
@@ -88,3 +109,14 @@ def personal_data():
     personal_data_dict['nextButton'] = 'Продолжить'
 
     return personal_data_dict
+
+
+def login_by_snils(s, r):
+    snils = input("Введите номер своего СНИЛСа:")
+    # здесь мы вставляем snils в строку '{"Snils": "121-278-875 53", "RememberMe": true}'
+
+    r2 = s.post(url='https://medbox.ru/2016/Cabinet/Account/SnilsLogin', data='{"Snils": "121-278-875 53", "RememberMe": true}')
+    r2 = s.get(r.url)
+    return s, r2
+
+
