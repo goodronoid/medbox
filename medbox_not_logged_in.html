@@ -1,0 +1,100 @@
+# not logged in
+
+<div class="login">
+                        
+<script src="/2016/Scripts/jquery.maskedinput.min.js" type="text/javascript"></script>
+<script type="text/javascript">
+    $(function () {
+        $.mask.definitions['9'] = '';
+        $.mask.definitions['d'] = '[0-9]';
+
+        $("#Snils").mask("ddd-ddd-ddd dd");
+    });
+</script>
+<script type="text/javascript">
+    $(function () {
+        $func = function () {
+            var Model = { Snils: $('#Snils').val(), RememberMe: $('#remcheck')[0].checked };
+            if (Model.Snils != "") {
+                $.ajax({
+                    type: "POST",
+                    url: "/2016/Cabinet/Account/SnilsLogin",
+                    data: JSON.stringify(Model),
+                    dataType: "json",
+                    contentType: 'application/json; charset=utf-8',
+                    cache: false,
+                    timeout: 15000,
+                    error: function (jqXHR, exception) {
+                        if (jqXHR.status === 0) {
+                            $('.form-error')[0].innerHTML = "Ошибка сервера";
+                        } else if (jqXHR.status == 500) {
+                            $('.form-error')[0].innerHTML = "Ошибка сервера";
+                        } else if (exception === 'parsererror') {
+                            $('.form-error')[0].innerHTML = "Ошибка сервера";
+                        } else if (exception === 'timeout') {
+                            $('.form-error')[0].innerHTML = "Время ожидания вышло";
+                        } else if (exception === 'abort') {
+                            $('.form-error')[0].innerHTML = "Ошибка сервера";
+                        } else {
+                            $('.form-error')[0].innerHTML = 'Неизвестная ошибка ' + jqXHR.responseText;
+                        }
+                    },
+                    success: function (result) {
+                        if (!result.error)
+                            window.location.href = globalredirect;
+                        else if (result.message === 'Пользователь не найден') {
+                            var url = "https://esia.miacugra.ru/cas/login?service=https%3a%2f%2fmedbox.ru%2f2016%2f";
+                            window.location.href = url;
+                        }
+                        else
+                            $('.form-error')[0].innerHTML = result.message;
+                    }
+                });
+            }
+            else
+                $('.form-error')[0].innerHTML = "Вы не ввели СНИЛС";
+        };
+
+        $(document).keypress(function (e) {
+            if (e.which == 13 && $('.is-visible').length) {
+                $func();
+            }
+        });
+        $('#logon_btn').click($func);
+    });
+</script>
+
+
+    <a href="/2016/Cabinet/Account/LoginWithoutJS" class="login-signin is-popup-trigger" popup-id="authorize">Вход в систему</a>
+    <a href="/2016/Cabinet/Account/Create" class="login-signup">Регистрация</a>
+    <div class="is-popup is-popup--login" popup-id="authorize" tabindex="-1">
+        <h3 class="is-popup-title slab">Войти в систему</h3>
+        <p class="is-popup-text">
+            Введите ваш номер СНИЛС.<br>
+            Для входа в систему необходимо авторизироваться в 
+            <span class="form-login-switch">
+                <a href="https://esia.miacugra.ru/cas/login?service=https%3a%2f%2fmedbox.ru%2f2016%2f">ЕСИА</a>
+            </span>
+        </p>
+        <form class="login-block" action="/2016/Cabinet/Account/SnilsLogin" onsubmit=" return false; ">
+
+            <label class="form-item" id="phone-block">
+                <span class="form-label form-label--login">СНИЛС:</span>
+                <input id="Snils" name="Snils" class="form-input textbox textbox--login is-first-focus" placeholder="Номер СНИЛС" tabindex="1">
+            </label>
+
+            <label class="login-remember">
+                <input type="checkbox" id="remcheck" checked="checked">Запомнить меня
+            </label>
+            <div class="form-error slab"></div>
+            <div class="form-button">
+                <input id="logon_btn" type="button" class="btn btn--red" value="Войти" tabindex="3">
+            </div>
+        </form>
+
+    </div>
+<div class="overlay"><div class="img"></div></div>
+
+
+
+                    </div>
